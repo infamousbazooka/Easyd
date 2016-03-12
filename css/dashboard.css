@@ -1,0 +1,117 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+*{
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	-webkit-transition: all 0.2s 0.1s ease-out;
+	   -moz-transition: all 0.2s 0.1s ease-out;
+		 -o-transition: all 0.2s 0.1s ease-out;
+	    -ms-transition: all 0.2s 0.1s ease-out;
+         	transition: all 0.2s 0.1s ease-out;
+}
+a,li,ul,ol{
+	text-decoration: none;
+	list-style: none;
+	color: #fff;
+}
+i{
+	margin-right: 10px;
+	color: #3f4f50;
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight: normal;
+}
+body{
+	max-width: 1600px;
+	clear: both;
+	background-color: #fafafa;
+	background-image: url(../images/bkg1.png);
+	background-repeat: repeat;
+}
+.img-responsive{
+	width: 100%;
+}
+.mainwrapper{
+	display: block;
+}
+.menu{
+	display: inline-block;
+	width: 300px;
+	background-color: #222d2f;
+}
+.menu .info{
+	display: block;
+	background-color: #2cc36b;
+}
+.menu .info article{
+	vertical-align: middle;
+	display: inline-block;
+}
+.menu .dp{
+	width: 100px;
+	margin: 10px;
+}
+.menu .dp img{
+	display: block;
+	border-radius: 50%;
+}
+.menu .information{
+	margin: 2px;
+	width: calc(100% - 130px);
+}
+.menu .information h4{
+	text-align: left;
+	color: #fff;
+}
+.menu li .h4{
+	padding: 8%;
+	text-align: left;
+	border-bottom: 3px solid #f25050;
+	background-color: #222d2f;
+}
+.menu li .h4:hover{
+	background-color: #212b2e;
+	border-color: #e67e22;
+}
+.menu li .h4:hover i{
+	margin-right: 20px;
+}
+.menu .inner-ul{
+	display: none;
+}
+.menu .inner-ul h4{
+	text-align: left;
+	background-color: #222d2f;
+	padding: 10px;
+	margin-left: 0px;
+	border-bottom: 2px solid #333;
+}
+.menu .inner-ul h4:hover{
+	margin-left: 10px;
+}
+.menu li .h4:hover .inner-ul{
+	display: block;
+}
+.body{
+	display: inline-block;
+	width: calc(100% - 305px);
+	vertical-align: top;
+}
+.body .title h1{
+	padding: 10px;
+	border-bottom: 2px solid #f25050;
+}
+
+.footer{
+	width: calc(100% - 20px);
+	bottom: 0;
+	padding: 10px;
+	background-color: #2cc36b;
+}
+.footer p{
+	color: #fafafa;
+}
+.fixedfooter{
+	position: fixed;
+}
