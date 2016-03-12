@@ -10,6 +10,12 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+	<div class="mainwrapper">
+		<h1>Hello World!</h1>
+		<p>kdn</p>
+	</div>
+
+
 <script src="js/lib/jquery.min.js"></script>
 <script src="js/main.js"></script>
 </body>
