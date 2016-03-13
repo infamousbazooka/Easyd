@@ -137,12 +137,36 @@ body{
 	font-size: 110%;
 }
 .body .form form article input{
-	width: 45%;
+	width: 49%;
 	margin: 2% 0;
 	padding: 5px;
 	font-size: 110%;
 }
-
+.body .form form section input, .body .form form section textarea{
+	vertical-align: top;
+	width: 47% !important;
+}
+.body .form form .radio{
+	cursor: pointer;
+	text-align: left;
+	display: inline-block;
+	margin: 6px 10px;
+}
+.body .form form select{
+	padding: 5px;
+	text-align: left;
+	width: 70%;
+	margin: 3% 15%;
+}
+.body .form form option{
+	padding: 5px;
+	text-align: left;
+}
+.body .form .box{
+	margin: 2% 0;
+	border: 2px solid #f25050;
+	padding: 3px;
+}
 
 .footer{
 	width: calc(100% - 20px);

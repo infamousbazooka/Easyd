@@ -19,8 +19,8 @@
 					<img src="../images/profile.png" class="img-responsive" alt="Profile picture">
 				</article>
 				<article class="information">
-					<h4>Magnus Fernandes</h4>
-					<h4>Cleaner</h4>
+					<h4>Name name</h4>
+					<h4>Designation</h4>
 				</article>
 			</div>
 			<ul>
@@ -51,7 +51,7 @@
 				</h4></a></li>
 				<li><a href="#"><h4 class="h4"><i class="fa fa-bomb"></i>PROJECT
 					<ul class="inner-ul">
-						<li><a href="#"><h4>ON PROJECT</h4></a></li>
+						<li><h4 onclick="getType('project', 'onproject')">ON PROJECT</h4></li>
 						<li><a href="#"><h4>OPEN PROJECT</h4></a></li>
 						<li><a href="#"><h4>MEETINGS</h4></a></li>
 						<li><a href="#"><h4>COMPANY CALENDAR</h4></a></li>
@@ -84,7 +84,19 @@
 			</ul>
 		</section>
 		<section class="body" id="body">
-
+			<div class="form">
+				<h1>CLIENT DETAILS</h1>
+				<form action="leaveapplication.php">
+					<input class="fill" type="text" id="name" required placeholder="CLIENT NAME" name="name">
+					<input class="fill" type="text" id="designation" required placeholder="DESIGNATION" name="designation">
+					<input class="fill" type="tel" id="contact" required placeholder="CONTACT" name="contact">
+					<input class="fill" type="email" id="email" required placeholder="EMAIL" name="email">
+					<article>
+						<input type="submit" value="SUBMIT">
+						<input type="reset" value="RESET">
+					</article>
+				</form>
+			</div>
 		</section>
 		<section class="footer">
 			<p>Footer text here.</p>
