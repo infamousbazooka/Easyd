@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>EasyD | Dashboard</title>
 	<link rel="stylesheet" href="../css/font-awesome.min.css">
+	<link rel="stylesheet" href="../css/jquery-ui.min.css">
 	<link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
@@ -28,9 +29,9 @@
 						<h4 class="h4">
 							<i class="fa fa-archive"></i>HUMAN RESOURCES
 							<ul class="inner-ul">
-								<li><a href="#"><h4>ATTENDENCE</h4></a></li>
-								<li><a href="#"><h4>PAYROLL</h4></a></li>
-								<li><a href="#"><h4>BIO-DATA</h4></a></li>
+								<li><h4 onclick="getType('hr','attendance')">ATTENDANCE</h4></li>
+								<li><h4 onclick="getType('hr','ask')">PAYROLL</h4></li>
+								<li><h4>BIO-DATA</h4></li>
 								<li><a href="#"><h4>INCENTIVES</h4></a></li>
 								<li><a href="#"><h4>APPRAISAL</h4></a></li>
 								<li><a href="#"><h4>INTERVIEWS</h4></a></li>
@@ -44,8 +45,8 @@
 				</li>
 				<li><a href="#"><h4 class="h4"><i class="fa fa-briefcase"></i>CRM
 					<ul class="inner-ul">
-						<li><a href="#"><h4>CLIENT</h4></a></li>
-						<li><a href="#"><h4>FOLLOWUP</h4></a></li>
+						<li><h4 onclick="getType('crm', 'client')">CLIENT</h4></li>
+						<li><h4 onclick="getType('crm', 'followup')">FOLLOWUP</h4></li>
 					</ul>
 				</h4></a></li>
 				<li><a href="#"><h4 class="h4"><i class="fa fa-bomb"></i>PROJECT
@@ -82,14 +83,15 @@
 				</h4></a></li>
 			</ul>
 		</section>
-		<section class="body">
-			<div class="title"><h1>ATTENDENCE</h1></div>
+		<section class="body" id="body">
+
 		</section>
 		<section class="footer">
 			<p>Footer text here.</p>
 		</section>
 	</div>
 <script src="../js/lib/jquery.min.js"></script>
+<script src="../js/lib/jquery-ui.min.js"></script>
 <script src="../js/main.js"></script>
 </body>
 </html>

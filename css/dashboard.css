@@ -102,6 +102,47 @@ body{
 	padding: 10px;
 	border-bottom: 2px solid #f25050;
 }
+.body .links{
+	display: block;
+	border-bottom: 2px solid #f25050;
+}
+.body .links h4{
+	background-color: #222d2f;
+	display: inline-block;
+	padding: 10px;
+	border: 2px solid #f25050;
+	margin: 2% 4%;
+	color: #fafafa;
+	cursor: pointer;
+}
+.body .links h4:hover{
+	border-color: #222d2f;
+	background-color: #f25050;
+}
+
+.body .form h1{
+	display: inline-block;
+	padding: 10px;
+	border-bottom: 2px solid #f25050;
+}
+.body .form form{
+	width: 50%;
+	margin: 3% 25%;
+}
+.body .form form .fill{
+	width: 75%;
+	margin: 2% 0;
+	padding: 5px;
+	text-align: left;
+	font-size: 110%;
+}
+.body .form form article input{
+	width: 45%;
+	margin: 2% 0;
+	padding: 5px;
+	font-size: 110%;
+}
+
 
 .footer{
 	width: calc(100% - 20px);
