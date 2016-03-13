@@ -185,3 +185,10 @@ body{
 .fixedfooter{
 	position: fixed;
 }
+
+
+.ui-menu-item{
+	background-color: #222d2f;
+	border: 2px solid #f25050;
+	border-top: none;
+}

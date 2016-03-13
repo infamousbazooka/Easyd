@@ -18,9 +18,9 @@
 		</section>
 		<section class="login">
 			<h1>Login</h1>
-			<form action="login.php">
-				<input class="fill" type="text" required placeholder="Username" name="username" id="username">
-				<input class="fill" type="password" required placeholder="Password" name="password" id="password">
+			<form action="login.php" method="POST">
+				<input class="fill" type="text" required placeholder="USERNAME" name="username" id="username">
+				<input class="fill" type="password" required placeholder="PASSWORD" name="password" id="password">
 				<article>
 					<input type="submit" value="SUBMIT">
 					<input type="reset" value="RESET" id="reset">

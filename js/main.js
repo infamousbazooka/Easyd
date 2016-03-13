@@ -1,6 +1,10 @@
 $(document).ready(function() {
 	menuHeight();
 
+	$('#category').click(function(event) {
+		combo();
+	});
+
 
 	
 });
@@ -16,13 +20,29 @@ function radioCheck () {
 		if($(this).attr("value")=="general"){
 			$("#sectortype").hide();
 		}
+		if($(this).attr("value")=="individual"){
+			$("#empname").show();
+		}
+		if($(this).attr("value")=="company"){
+			$("#empname").hide();
+		}
 	});
 }
+
 function getForm(type, sub){
 	file = "";
 	switch (type) {
 		case 'attendance':
 			file = "Human_Resources/Attendance/";
+			break;
+		case 'interview':
+			file = "Human_Resources/Interviews/";
+			break;
+		case 'appraisal':
+			file = "Human_Resources/Appraisal/";
+			break;
+		case 'suggest':
+			file = "Human_Resources/Suggestions/";
 			break;
 		case 'clist':
 			file = "CRM/Clist/";
@@ -99,4 +119,60 @@ function menuHeight () {
 	else{
 		$('.menu').css('min-height', $(window).height() + "px");
 	}
+}
+function combo () {
+	 var ctype = $('#category').val();
+	 		switch (ctype) {
+	 			case 'owner':
+	 				$('#posttype')
+	 					.find('option')
+	 					.remove();
+	 				$('#posttype').append($('<option>', {
+	 					value: 'prop',
+	 					text: 'PROPREITER'
+	 				}));
+	 				break;
+	 			case 'hr':
+	 				$('#posttype')
+	 					.find('option')
+	 					.remove();
+	 				$('#posttype').append($('<option>', {
+	 					value: 'hrman',
+	 					text: 'HR MANAGER'
+	 				}));
+	 				$('#posttype').append($('<option>', {
+	 					value: 'hrexec',
+	 					text: 'HR EXECUTIVE'
+	 				}));
+	 				break;
+	 			case 'acc':
+	 				$('#posttype')
+	 					.find('option')
+	 					.remove();
+	 				$('#posttype').append($('<option>', {
+	 					value: 'accman',
+	 					text: 'ACCOUNTS MANAGER'
+	 				}));
+	 				$('#posttype').append($('<option>', {
+	 					value: 'accexec',
+	 					text: 'ACCOUNTS EXECUTIVE'
+	 				}));
+	 				break;
+	 			case 'emp':
+	 				$('#posttype')
+	 					.find('option')
+	 					.remove();
+	 				$('#posttype').append($('<option>', {
+	 					value: 'manager',
+	 					text: 'MANAGER'
+	 				}));
+	 				$('#posttype').append($('<option>', {
+	 					value: 'executive',
+	 					text: 'EXECUTIVE'
+	 				}));
+	 				break;
+	 			default:
+	 				// statements_def
+	 				break;
+	 		} 
 }

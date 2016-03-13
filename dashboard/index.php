@@ -1,3 +1,13 @@
+<?php
+	session_start();
+	if (!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
+		header('Location: ../');
+	}
+	else{
+		$username = $_SESSION["username"];
+		$name = $_SESSION["name"];
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +17,7 @@
 	<meta name="description" content="EasyD for Svastek">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>EasyD | Dashboard</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" href="../css/font-awesome.min.css">
 	<link rel="stylesheet" href="../css/jquery-ui.min.css">
 	<link rel="stylesheet" href="../css/dashboard.css">
@@ -19,8 +30,9 @@
 					<img src="../images/profile.png" class="img-responsive" alt="Profile picture">
 				</article>
 				<article class="information">
-					<h4>Name name</h4>
-					<h4>Designation</h4>
+					<?php
+						echo "<h4>" . $username . "</h4><h4>" . $name . "</h4>";
+					?>
 				</article>
 			</div>
 			<ul>
@@ -31,14 +43,14 @@
 							<ul class="inner-ul">
 								<li><h4 onclick="getType('hr','attendance')">ATTENDANCE</h4></li>
 								<li><h4 onclick="getType('hr','ask')">PAYROLL</h4></li>
-								<li><h4>BIO-DATA</h4></li>
-								<li><a href="#"><h4>INCENTIVES</h4></a></li>
-								<li><a href="#"><h4>APPRAISAL</h4></a></li>
-								<li><a href="#"><h4>INTERVIEWS</h4></a></li>
-								<li><a href="#"><h4>CIRCULAR</h4></a></li>
-								<li><a href="#"><h4>SUGGESTIONS</h4></a></li>
-								<li><a href="#"><h4>PROFILE</h4></a></li>
-								<li><a href="#"><h4>NEW STAFF</h4></a></li>
+								<li><h4 onclick="getType('hr','biodata')">BIO-DATA</h4></li>
+								<li><h4 onclick="getType('hr','incentives')">INCENTIVES</h4></li>
+								<li><h4 onclick="getType('hr','appraisal')">APPRAISAL</h4></li>
+								<li><h4 onclick="getType('hr','interviews')">INTERVIEWS</h4></li>
+								<li><h4 onclick="getType('hr','circular')">CIRCULAR</h4></li>
+								<li><h4 onclick="getType('hr','suggest')">SUGGESTIONS</h4></li>
+								<li><h4 onclick="getType('hr','profile')">PROFILE</h4></li>
+								<li><h4 onclick="getType('hr','staff')">NEW STAFF</h4></li>
 							</ul>
 						</h4>
 					</a>
@@ -85,31 +97,16 @@
 		</section>
 		<section class="body" id="body">
 			<div class="form">
-				<h1>NEW REGISTRATION</h1>
+				<h1>INCENTIVE</h1>
 				<form action="leaveapplication.php">
 					<section>
-						<input class="fill" type="text" id="date" required placeholder="DATE" name="date">
-						<input class="fill" type="text" id="cname" required placeholder="CLIENT NAME" name="cname">
+						<input type="text" name="empname" id="empname" class="fill" required placeholder="EMPLOYEE NAME">
+						<input type="number" name="amount" id="amount" class="fill" required placeholder="AMOUNT">
 					</section>
-					<section>
-						<input class="fill" type="text" id="pname" required placeholder="PROJECT NAME" name="pname">
-						<input class="fill" type="text" id="workacc" required placeholder="WORK ACCOMPLISHED" name="workacc">
-					</section>
-					<section>
-						<input class="fill" type="number" id="hours" required placeholder="NO OF HOURS" name="hours">
-						<input class="fill" type="text" id="marketing" required placeholder="MARKETING" name="marketing">
-					</section>
-					<section>
-						<input class="fill" type="text" id="mwacc" required placeholder="MARKETING WORK ACCOMPLISHED" name="wacc">
-						<input class="fill" type="text" id="admin" required placeholder="ADMIN" name="admin">
-					</section>
-					<section>
-						<input class="fill" type="text" id="awacc" required placeholder="ADMIN WORK ACCOMPLISHED" name="awacc">
-						<input class="fill" type="text" id="ope" required placeholder="OPE" name="ope">
-					</section>
+					<input type="text" name="reason" id="reason" class="fill" required placeholder="REASON FOR INCENTIVE">
 					<article>
 						<input type="submit" value="SUBMIT">
-						<input type="reset" value="RESET">
+						<input type="reset" value="CLEAR">
 					</article>
 				</form>
 			</div>
