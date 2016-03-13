@@ -5,7 +5,7 @@
 						<form action="leaveapplication.php">
 							<input class="fill" type="text" id="from" required placeholder="FROM" name="from">
 							<input class="fill" type="text" id="to" required placeholder="TO" name="to">
-							<textarea class="fill" name="reason" required placeholder="Reason for leave"></textarea>
+							<textarea class="fill" name="reason" required placeholder="REASON FOR LEAVE"></textarea>
 							<article>
 								<input type="submit" value="SUBMIT">
 								<input type="reset" value="RESET">

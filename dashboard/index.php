@@ -52,13 +52,13 @@
 				<li><a href="#"><h4 class="h4"><i class="fa fa-bomb"></i>PROJECT
 					<ul class="inner-ul">
 						<li><h4 onclick="getType('project', 'onproject')">ON PROJECT</h4></li>
-						<li><a href="#"><h4>OPEN PROJECT</h4></a></li>
-						<li><a href="#"><h4>MEETINGS</h4></a></li>
-						<li><a href="#"><h4>COMPANY CALENDAR</h4></a></li>
-						<li><a href="#"><h4>TIME TRACKER</h4></a></li>
-						<li><a href="#"><h4>PRE PROJECT</h4></a></li>
-						<li><a href="#"><h4>POST PROJECT</h4></a></li>
-						<li><a href="#"><h4>REIMBURSEMENTS</h4></a></li>
+						<li><h4 onclick="getType('project', 'openproject')">OPEN PROJECT</h4></li>
+						<li><h4 onclick="getType('project', 'meetings')">MEETINGS</h4></li>
+						<li><h4 onclick="getType('project', 'companycalendar')">COMPANY CALENDAR</h4></li>
+						<li><h4 onclick="getType('project', 'timetracker')">TIME TRACKER</h4></li>
+						<li><h4 onclick="getType('project', 'preproject')">PRE PROJECT</h4></li>
+						<li><h4 onclick="getType('project', 'postproject')">POST PROJECT</h4></li>
+						<li><h4 onclick="getType('project', 'reimbursements')">REIMBURSEMENTS</h4></li>
 					</ul>
 				</h4></a></li>
 				<li><a href="#"><h4 class="h4"><i class="fa fa-asterisk"></i>PERFORMANCE</h4></a></li>
@@ -77,20 +77,36 @@
 				</h4></a></li>
 				<li><a href="#"><h4 class="h4"><i class="fa fa-asterisk"></i>EMPLOYEE REGISRATION
 					<ul class="inner-ul">
-						<li><a href="#"><h4>NEW REGISTRATION</h4></a></li>
-						<li><a href="#"><h4>CHANGE PASSWORD</h4></a></li>
+						<li><h4 onclick="getType('empreg', 'new')">NEW REGISTRATION</h4></li>
+						<li><h4 onclick="getType('empreg', 'change')">CHANGE PASSWORD</h4></li>
 					</ul>
 				</h4></a></li>
 			</ul>
 		</section>
 		<section class="body" id="body">
 			<div class="form">
-				<h1>CLIENT DETAILS</h1>
+				<h1>NEW REGISTRATION</h1>
 				<form action="leaveapplication.php">
-					<input class="fill" type="text" id="name" required placeholder="CLIENT NAME" name="name">
-					<input class="fill" type="text" id="designation" required placeholder="DESIGNATION" name="designation">
-					<input class="fill" type="tel" id="contact" required placeholder="CONTACT" name="contact">
-					<input class="fill" type="email" id="email" required placeholder="EMAIL" name="email">
+					<section>
+						<input class="fill" type="text" id="date" required placeholder="DATE" name="date">
+						<input class="fill" type="text" id="cname" required placeholder="CLIENT NAME" name="cname">
+					</section>
+					<section>
+						<input class="fill" type="text" id="pname" required placeholder="PROJECT NAME" name="pname">
+						<input class="fill" type="text" id="workacc" required placeholder="WORK ACCOMPLISHED" name="workacc">
+					</section>
+					<section>
+						<input class="fill" type="number" id="hours" required placeholder="NO OF HOURS" name="hours">
+						<input class="fill" type="text" id="marketing" required placeholder="MARKETING" name="marketing">
+					</section>
+					<section>
+						<input class="fill" type="text" id="mwacc" required placeholder="MARKETING WORK ACCOMPLISHED" name="wacc">
+						<input class="fill" type="text" id="admin" required placeholder="ADMIN" name="admin">
+					</section>
+					<section>
+						<input class="fill" type="text" id="awacc" required placeholder="ADMIN WORK ACCOMPLISHED" name="awacc">
+						<input class="fill" type="text" id="ope" required placeholder="OPE" name="ope">
+					</section>
 					<article>
 						<input type="submit" value="SUBMIT">
 						<input type="reset" value="RESET">

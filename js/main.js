@@ -8,14 +8,6 @@ $(window).resize(function() {
 
 });
 
-
-$(function() {
-	$( "#from" ).datepicker();
-	$( "#to" ).datepicker();
-	$( "#start" ).datepicker();
-	$( "#end" ).datepicker();
-});
-
 function radioCheck () {
 	$('input[type="radio"]').click(function(){
 		if($(this).attr("value")=="sector"){
@@ -41,11 +33,31 @@ function getForm(type, sub){
 		case 'onproject':
 			file = "Project_Management/On_Project/";
 			break;
+		case 'meetings':
+			file = "Project_Management/Meetings/";
+			break;
+		case 'timetracker':
+			file = "Project_Management/Time_Tracker/";
+			break;
+		case 'reimbursements':
+			file = "Project_Management/Reimbursements/";
+			break;
 		default:
 			// statements_def
 			break;
 	}
-	$('#form').load(file, {"type":sub});
+	$('#form').load(file, {"type":sub}, function(){
+		$( "#from" ).datepicker();
+		$( "#to" ).datepicker();
+		$( "#start" ).datepicker();
+		$( "#end" ).datepicker();
+		$( "#pstart" ).datepicker();
+		$( "#pend" ).datepicker();
+		$( "#calendardate" ).datepicker();
+		$( "#periodfrom" ).datepicker();
+		$( "#periodto" ).datepicker();
+		$( "#date" ).datepicker();
+	});
 }
 function getType(type, sub){
 	file = "";
@@ -59,11 +71,25 @@ function getType(type, sub){
 		case 'project':
 			file = 'Project_Management/';
 			break;
+		case 'empreg':
+			file = 'Employee_Registration/';
+			break;
 		default:
 			// statements_def
 			break;
 	}
-	$('#body').load(file, {"type":sub}, menuHeight());
+	$('#body').load(file, {"type":sub}, function(){
+		$( "#from" ).datepicker();
+		$( "#to" ).datepicker();
+		$( "#start" ).datepicker();
+		$( "#end" ).datepicker();
+		$( "#pstart" ).datepicker();
+		$( "#pend" ).datepicker();
+		$( "#calendardate" ).datepicker();
+		$( "#periodfrom" ).datepicker();
+		$( "#periodto" ).datepicker();
+		$( "#date" ).datepicker();
+	});
 }
 
 function menuHeight () {

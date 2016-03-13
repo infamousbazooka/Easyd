@@ -167,6 +167,11 @@ body{
 	border: 2px solid #f25050;
 	padding: 3px;
 }
+.body .form form article h4, .body .form form article select{
+	display: inline-block;
+	width: 47%;
+	margin: 3% 0;
+}
 
 .footer{
 	width: calc(100% - 20px);

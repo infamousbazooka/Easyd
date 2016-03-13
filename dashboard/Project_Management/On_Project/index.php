@@ -22,7 +22,6 @@
 					</article>
 				</form>';
 			break;
-		
 		case 'clientdetails':
 			echo '<h1>CLIENT DETAILS</h1>
 				<form action="leaveapplication.php">
@@ -35,6 +34,33 @@
 						<input type="reset" value="RESET">
 					</article>
 				</form>';
+			break;
+		case 'tasks':
+			echo '<h1>TASKS</h1>
+				<form action="leaveapplication.php">
+					<article>
+						<input type="button" value="ALLOCATE TASKS" id="allocatetasks">
+						<input type="button" value="VIEW TASKS" id="viewtasks">
+					</article>
+				</form>';
+			break;
+		case 'viewproject':
+			echo '<h1>VIEW PROJECTS</h1>
+				<form action="leaveapplication.php">
+					<article>
+						<input type="button" value="PROJECT SUMMARY" id="summary">
+						<input type="button" value="PROJECT DETAILS" id="details">
+					</article>
+					<input class="fill" type="text" id="firmname" required placeholder="FIRM NAME" name="firmname">
+					<input class="fill" type="text" id="projectname" required placeholder="PROJECT NAME" name="projectname">
+					<input class="fill" type="text" id="teamleader" required placeholder="TEAM LEADER" name="teamleader">
+					<input class="fill" type="text" id="description" required placeholder="PROJECT DESCRIPTION" name="description">
+					<input class="fill" type="text" id="pstart" required placeholder="START" name="pstart">
+					<input class="fill" type="text" id="pend" required placeholder="END" name="pend">
+				</form>';
+			break;
+		case 'addmembers':
+			echo '';
 			break;
 		default:
 			echo "nothin";
