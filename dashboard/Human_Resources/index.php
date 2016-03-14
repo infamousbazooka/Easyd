@@ -80,13 +80,14 @@
 			echo ('<div class="form">
 				<h1>PROFILE</h1>
 				<form action="leaveapplication.php">
-					<h4 class="radio"><label><input type="radio" onclick="radioCheck()" id="individual" name="profileview" value="individual"> INDIVIDUAL</label></h4>
+					<h4 class="radio"><label><input type="radio" onclick="radioCheck()" id="individual" checked name="profileview" value="individual"> INDIVIDUAL</label></h4>
 					<h4 class="radio"><label><input type="radio" onclick="radioCheck()" id="company" name="profileview" value="company"> COMPANY</label></h4>
 					<input class="fill" type="text" name="empname" id="empname" required placeholder="EMPLOYEE NAME">
 					<article>
-						<input type="submit" value="VIEW PROFILE">
+						<input type="button" id="viewprof" onclick="viewpro()" value="VIEW PROFILE">
 					</article>
 				</form>
+				<div id="display"></div>
 			</div>');
 			break;
 		case 'staff':

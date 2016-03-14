@@ -35,50 +35,40 @@
 				</form>';
 			break;
 		case 'lreg':
-			
-				$servername = "localhost";
-				$uname = "root";
-				$pword = "";
-				$dbname = "easyd";
-
-				$conn = new mysqli($servername, $uname, $pword, $dbname);
-				if ($conn->connect_error) {
-				    die("Connection failed: " . $conn->connect_error);
-				}
-				session_start();
-				$username = $_SESSION["username"];
-				$name = $_SESSION["name"];
-				$sql = "SELECT from1, to1, application_date, reason, approval_status FROM leave_applications WHERE empname='" . $name . "'";
-				$result = $conn->query($sql);
-				echo "<h1>LEAVE REGISTER</h1>
-			<table class='table'>
-				<tr>
-					<th>FROM</th>
-					<th>TO</th>
-					<th>APPLICATION DATE</th>
-					<th>REASON</th>
-					<th>STATUS</th>
-				</tr>";
-				if ($result->num_rows > 0) {
-				    while($row = $result->fetch_assoc()) {
-				    	echo '<tr>
-					<td>' . $row["from1"] . '</td>
-					<td>' . $row["to1"] . '</td>
-					<td>' . $row["application_date"] . '</td>
-					<td>' . $row["reason"] . '</td>
-					<td>' . $row["approval_status"] . '</td>
-				</tr>';
-				    }
-				}
-				echo "</table>";
-				$sql = "SELECT quota FROM leave_quota WHERE empname='" . $name . "' AND empid='" . $username . "'";
-				$result = $conn->query($sql);
-				if ($result->num_rows > 0) {
-				    while($row = $result->fetch_assoc()) {
-				    	echo "<h3 class='quota'>You have " . $row["quota"] . " days in your leave quota.<h3>";
-				    }
-				}
-				$conn->close();
+			echo '<h1>LEAVE REGISTER</h1>
+				<form action="">
+					<h4 class="radio"><label><input type="radio" checked onclick="radioCheck()" id="indiv" name="leavereg" value="indiv"> INDIVIDUAL</label></h4>
+					<h4 class="radio"><label><input type="radio" onclick="radioCheck()" id="comp" name="leavereg" value="comp"> COMPANY</label></h4>
+					<input type="text" class="fill" name="empname" onkeyup="checkviewindi()" id="empname" required placeholder="EMPLOYEE NAME">
+					<article>
+						<h4>MONTH</h4>
+						<select id="month">
+							<option value="jan">JANUARY</option>
+							<option value="feb">FEBRUARY</option>
+							<option value="mar">MARCH</option>
+							<option value="apr">APRIL</option>
+							<option value="may">MAY</option>
+							<option value="jun">JUNE</option>
+							<option value="jul">JULY</option>
+							<option value="aug">AUGUST</option>
+							<option value="sept">SEPTEMBER</option>
+							<option value="oct">OCTOBER</option>
+							<option value="nov">NOVEMBER</option>
+							<option value="dec">DECEMBER</option>
+						</select>
+					</article>
+					<article>
+						<h4>YEAR</h4>
+						<select id="year">
+							<option value="2016">2016</option>
+							<option value="2017">2017</option>
+						</select>
+					</article>
+					<article>
+						<input type="button" onclick="viewind()" disabled="disabled" value="VIEW" id="viewindi">
+					</article>
+				</form>
+				<div id="display"></div>';
 			break;
 		case 'attreg':
 			echo'';

@@ -4,19 +4,53 @@ $(document).ready(function() {
 	$('#category').click(function(event) {
 		combo();
 	});
-
-
-
-	$("#pass").keydown(function() {
-		checkPasswordMatch();
+	$('#empname').keyup(function(event) {
+		if ($('#empname').val() == "") {
+			$('#viewindi').attr('disabled', 'disabled');
+		}
+		else{
+			$('#viewindi').removeAttr('disabled');
+		}
 	});
-	$("#rpass").keydown(function() {
-		checkPasswordMatch();
+	$('#viewindi').click(function(event) {
+		viewindi();
 	});
 });
 $(window).resize(function() {
 
 });
+function checkviewindi () {
+	if ($('#empname').val() == "") {
+		$('#viewindi').attr('disabled', 'disabled');
+	}
+	else{
+		$('#viewindi').removeAttr('disabled');
+	}
+}
+function viewpro () {
+	file = "Human_Resources/Profile/get.php";
+	name = $('#empname').val();
+	if (name == "") {
+		console.log('runn');
+		$('#display').load(file);
+	}
+	else {
+		$('#display').load(file, {"name":name});
+	}
+}
+function viewind() {
+	file = "http://localhost/easyd/dashboard/Human_Resources/Attendance/get.php";
+	name = $('#empname').val();
+	month = $('#month').val();
+	year = $('#year').val();
+	if (name == "") {
+		console.log('runn');
+		$('#display').load(file, {"month":month, "year":year});
+	}
+	else {
+		$('#display').load(file, {"name":name, "month":month, "year":year});
+	} 
+}
 function checkPasswordMatch() {
     var password = $("#pass").val();
     var confirmPassword = $("#rpass").val();
@@ -47,6 +81,18 @@ function radioCheck () {
 			$("#empname").show();
 		}
 		if($(this).attr("value")=="company"){
+			$("#empname").val("");
+			$("#empname").hide();
+		}
+		if($(this).attr("value")=="indiv"){
+			$("#empname").show();
+			if ($('#empname').val() == "") {
+				$('#viewindi').attr('disabled', 'disabled');
+			}
+		}
+		if($(this).attr("value")=="comp"){
+			$('#empname').val("");
+			$('#viewindi').removeAttr('disabled');
 			$("#empname").hide();
 		}
 	});
@@ -143,6 +189,7 @@ function menuHeight () {
 		$('.menu').css('min-height', $(window).height() + "px");
 	}
 }
+
 function combo() {
 	 var ctype = $('#category').val();
 	 	console.log(ctype);
