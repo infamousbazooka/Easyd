@@ -19,7 +19,7 @@ i{
 	margin-right: 10px;
 	color: #3f4f50;
 }
-h1,h2,h3,h4,h5,h6{
+h1,h2,h3,h4,h5,h6,tr,table,td,th{
 	font-weight: normal;
 }
 body{
@@ -31,6 +31,14 @@ body{
 }
 .img-responsive{
 	width: 100%;
+}
+table{
+	margin-top: 20px;
+	min-width: 100%;
+	border-spacing: 20px;
+}
+.table td, .table th, .table tr{
+	text-align: left;
 }
 .mainwrapper{
 	display: block;
@@ -171,6 +179,11 @@ body{
 	display: inline-block;
 	width: 47%;
 	margin: 3% 0;
+}
+.quota{
+	display: inline-block;
+	background-color: #f25050;
+	padding: 10px;
 }
 
 .footer{

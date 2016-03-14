@@ -97,18 +97,79 @@
 		</section>
 		<section class="body" id="body">
 			<div class="form">
-				<h1>INCENTIVE</h1>
-				<form action="leaveapplication.php">
-					<section>
-						<input type="text" name="empname" id="empname" class="fill" required placeholder="EMPLOYEE NAME">
-						<input type="number" name="amount" id="amount" class="fill" required placeholder="AMOUNT">
-					</section>
-					<input type="text" name="reason" id="reason" class="fill" required placeholder="REASON FOR INCENTIVE">
+				<h1>LEAVE REGISTER</h1>
+				<form action="">
+					<input type="text" class="fill" name="empname" id="empname" required placeholder="EMPLOYEE NAME">
 					<article>
-						<input type="submit" value="SUBMIT">
-						<input type="reset" value="CLEAR">
+						<h4>MONTH</h4>
+						<select name="status">
+							<option value="jan">JANUARY</option>
+							<option value="feb">FEBRUARY</option>
+							<option value="mar">MARCH</option>
+							<option value="apr">APRIL</option>
+							<option value="may">MAY</option>
+							<option value="jun">JUNE</option>
+							<option value="jul">JULY</option>
+							<option value="aug">AUGUST</option>
+							<option value="sept">SEPTEMBER</option>
+							<option value="oct">OCTOBER</option>
+							<option value="nov">NOVEMBER</option>
+							<option value="dec">DECEMBER</option>
+						</select>
+					</article>
+					<article>
+						<h4>YEAR</h4>
+						<select name="status">
+							<option value="2016">2016</option>
+							<option value="2017">2017</option>
+						</select>
 					</article>
 				</form>
+				<table class="table">
+					<tr>
+						<th>FROM</th>
+						<th>TO</th>
+						<th>APPLICATION DATE</th>
+						<th>REASON</th>
+						<th>STATUS</th>
+					</tr>
+				<?php
+					$servername = "localhost";
+					$uname = "root";
+					$pword = "";
+					$dbname = "easyd";
+
+					$conn = new mysqli($servername, $uname, $pword, $dbname);
+					if ($conn->connect_error) {
+					    die("Connection failed: " . $conn->connect_error);
+					}
+					$sql = "SELECT from1, to1, application_date, reason, approval_status FROM leave_applications WHERE empname='" . $_SESSION["name"] . "'";
+					$result = $conn->query($sql);
+
+					if ($result->num_rows > 0) {
+					    while($row = $result->fetch_assoc()) {
+					    	echo '<tr>
+						<td>' . $row["from1"] . '</td>
+						<td>' . $row["to1"] . '</td>
+						<td>' . $row["application_date"] . '</td>
+						<td>' . $row["reason"] . '</td>
+						<td>' . $row["approval_status"] . '</td>
+					</tr>';
+					    }
+					}
+				?>
+				</table>
+
+				<?php
+					$sql = "SELECT quota FROM leave_quota WHERE empname='" . $_SESSION["name"] . "' AND empid='" . $_SESSION["username"] . "'";
+					$result = $conn->query($sql);
+					if ($result->num_rows > 0) {
+					    while($row = $result->fetch_assoc()) {
+					    	echo "<h3 class='quota'>You have " . $row["quota"] . " days in your leave quota.<h3>";
+					    }
+					}
+					$conn->close();
+				?>
 			</div>
 		</section>
 		<section class="footer">

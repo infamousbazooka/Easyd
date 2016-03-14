@@ -4,10 +4,10 @@
 			echo ('<div class="title"><h1>ATTENDANCE</h1></div>
 					<div class="links">
 						<h4 onclick="getForm(\'attendance\', \'leave\')">APPLY FOR LEAVE</h4>
-						<h4>LEAVE REGISTER</h4>
-						<h4>COMPANY ATTENDANCE REGISTER</h4>
-						<h4>GIVE ATTENDANCE</h4>
-						<h4>LEAVE APPLICATIONS</h4>
+						<h4 onclick="getForm(\'attendance\', \'lreg\')">LEAVE REGISTER</h4>
+						<h4 onclick="getForm(\'attendance\', \'attreg\')">COMPANY ATTENDANCE REGISTER</h4>
+						<h4 onclick="getForm(\'attendance\', \'gatt\')">GIVE ATTENDANCE</h4>
+						<h4 onclick="getForm(\'attendance\', \'leaveapp\')">LEAVE APPLICATIONS</h4>
 						<h4 onclick="getForm(\'attendance\', \'update\')">UPDATE LEAVE QUOTA</h4>
 					</div>
 					<div id="form" class="form"></div>');
@@ -91,44 +91,42 @@
 			break;
 		case 'staff':
 			echo '<div class="form">
-					<h1>STAFF REGISTRATION</h1>
-					<form action="leaveapplication.php">
-						<section>
-							<input class="fill" type="text" id="pname" required placeholder="NAME" name="pname">
-							<input class="fill" type="text" id="workacc" required placeholder="EMAIL" name="workacc">
-						</section>
-						<section>
-							<input class="fill" type="number" id="hours" required placeholder="PERMANENT ADDRESS" name="hours">
-							<input class="fill" type="text" id="marketing" required placeholder="CONTACT NO" name="marketing">
-						</section>
-						<section>
-							<input class="fill" type="text" id="mwacc" required placeholder="BANK" name="wacc">
-						</section>
-						<article>
-							<h4>CATEGORY</h4>
-							<select id="category">
-								<option value="owner">OWNER</option>
-								<option value="hr">HUMAN RESOURCES</option>
-								<option value="acc">ACCOUNTS</option>
-								<option value="emp">EMPLOYEE</option>
-							</select>
-						</article>
-						<article>
-							<h4>POST</h4>
-							<select id="posttype">
-								<option value="prop">PROPREITOR</option>
-							</select>
-						</article>
-						<section>
-							<input class="fill" type="text" id="awacc" required placeholder="ADMIN WORK ACCOMPLISHED" name="awacc">
-							<input class="fill" type="text" id="ope" required placeholder="OPE" name="ope">
-						</section>
-						<article>
-							<input type="submit" value="SUBMIT">
-							<input type="reset" value="RESET">
-						</article>
-					</form>
-					</div>';
+	<h1>STAFF REGISTRATION</h1>
+	<form action="Human_Resources/Staff/insert.php" method="POST">
+		<section>
+			<input class="fill" type="text" id="pname" required placeholder="NAME" name="name">
+			<input class="fill" type="email" id="email" required placeholder="EMAIL" name="email">
+		</section>
+		<section>
+			<input class="fill" type="text" id="address" required placeholder="PERMANENT ADDRESS" name="address">
+			<input class="fill" type="tel" id="contact" required placeholder="CONTACT NO" name="contact">
+		</section>
+		<section>
+			<input class="fill" type="text" id="bank" required placeholder="BANK" name="bank">
+		</section>
+		<article>
+			<h4>CATEGORY</h4>
+			<select id="category" onclick="combo()">
+				<option value="owner">OWNER</option>
+				<option value="hr">HUMAN RESOURCES</option>
+				<option value="acc">ACCOUNTS</option>
+				<option value="emp">EMPLOYEE</option>
+			</select>
+		</article>
+		<article>
+			<h4>POST</h4>
+			<select id="posttype" name="posttype">
+				<option value="Propreitor">PROPREITOR</option>
+			</select>
+		</article>
+		<input class="fill" type="text" id="from" required placeholder="DATE OF BIRTH" name="dob">
+		<input class="fill" type="text" id="to" required placeholder="JOINING DATE" name="join">
+		<article>
+			<input type="submit" value="SUBMIT">
+			<input type="reset" value="RESET">
+		</article>
+	</form>
+</div>';
 			break;
 		default:
 			echo "nothin";

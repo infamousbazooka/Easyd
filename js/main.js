@@ -6,12 +6,35 @@ $(document).ready(function() {
 	});
 
 
-	
+
+	$("#pass").keydown(function() {
+		checkPasswordMatch();
+	});
+	$("#rpass").keydown(function() {
+		checkPasswordMatch();
+	});
 });
 $(window).resize(function() {
 
 });
+function checkPasswordMatch() {
+    var password = $("#pass").val();
+    var confirmPassword = $("#rpass").val();
 
+    if (password != confirmPassword) {
+        $("#ret").prop("disabled", true);
+        return false;
+    }
+    else if (password=="" || confirmPassword=="") {
+        $("#ret").prop("disabled", true);
+        return false;
+    } else {
+		console.log("done");
+        $("#ret").prop("disabled", false);
+        $("#ret").removeAttr('disabled');
+        return true;
+    }
+}
 function radioCheck () {
 	$('input[type="radio"]').click(function(){
 		if($(this).attr("value")=="sector"){
@@ -120,15 +143,16 @@ function menuHeight () {
 		$('.menu').css('min-height', $(window).height() + "px");
 	}
 }
-function combo () {
+function combo() {
 	 var ctype = $('#category').val();
+	 	console.log(ctype);
 	 		switch (ctype) {
 	 			case 'owner':
 	 				$('#posttype')
 	 					.find('option')
 	 					.remove();
 	 				$('#posttype').append($('<option>', {
-	 					value: 'prop',
+	 					value: 'Propreitor',
 	 					text: 'PROPREITER'
 	 				}));
 	 				break;
@@ -137,12 +161,12 @@ function combo () {
 	 					.find('option')
 	 					.remove();
 	 				$('#posttype').append($('<option>', {
-	 					value: 'hrman',
-	 					text: 'HR MANAGER'
+	 					value: 'HR Manager',
+	 					text: 'MANAGER'
 	 				}));
 	 				$('#posttype').append($('<option>', {
-	 					value: 'hrexec',
-	 					text: 'HR EXECUTIVE'
+	 					value: 'HR Executive',
+	 					text: 'EXECUTIVE'
 	 				}));
 	 				break;
 	 			case 'acc':
@@ -150,12 +174,12 @@ function combo () {
 	 					.find('option')
 	 					.remove();
 	 				$('#posttype').append($('<option>', {
-	 					value: 'accman',
-	 					text: 'ACCOUNTS MANAGER'
+	 					value: 'Accounts Manager',
+	 					text: 'MANAGER'
 	 				}));
 	 				$('#posttype').append($('<option>', {
-	 					value: 'accexec',
-	 					text: 'ACCOUNTS EXECUTIVE'
+	 					value: 'Accounts Executive',
+	 					text: 'EXECUTIVE'
 	 				}));
 	 				break;
 	 			case 'emp':
@@ -163,12 +187,46 @@ function combo () {
 	 					.find('option')
 	 					.remove();
 	 				$('#posttype').append($('<option>', {
-	 					value: 'manager',
+	 					value: 'Manager',
 	 					text: 'MANAGER'
 	 				}));
 	 				$('#posttype').append($('<option>', {
-	 					value: 'executive',
+	 					value: 'Executive',
 	 					text: 'EXECUTIVE'
+	 				}));
+	 				break;
+	 			case 'Client':
+	 				$('#posttype')
+	 					.find('option')
+	 					.remove();
+	 				$('#posttype').append($('<option>', {
+	 					value: 'Transport',
+	 					text: 'TRANSPORT'
+	 				}));
+	 				$('#posttype').append($('<option>', {
+	 					value: 'Phone_Calls',
+	 					text: 'PHONE CALLS'
+	 				}));
+	 				$('#posttype').append($('<option>', {
+	 					value: 'Others',
+	 					text: 'OTHERS'
+	 				}));
+	 				break;
+	 			case 'Office':
+	 				$('#posttype')
+	 					.find('option')
+	 					.remove();
+	 				$('#posttype').append($('<option>', {
+	 					value: 'Food',
+	 					text: 'FOOD'
+	 				}));
+	 				$('#posttype').append($('<option>', {
+	 					value: 'Transport',
+	 					text: 'TRANSPORT'
+	 				}));
+	 				$('#posttype').append($('<option>', {
+	 					value: 'Miscellaneous',
+	 					text: 'MISCELLANEOUS'
 	 				}));
 	 				break;
 	 			default:

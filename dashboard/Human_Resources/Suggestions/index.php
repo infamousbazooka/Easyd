@@ -5,8 +5,8 @@
 			break;
 		case 'give':
 			echo '<h1>GIVE SUGGESTIONS</h1>
-				<form action="leaveapplication.php">
-					<textarea class="fill" name="suggestion" id="suggestion" required placeholder="SUGGESTION"></textarea>
+				<form action="Human_Resources/Suggestions/suggest.php" method="POST">
+					<textarea class="fill" name="compl" id="suggestion" required placeholder="SUGGESTION"></textarea>
 					<article>
 						<input type="submit" value="SUGGEST">
 						<input type="reset" value="RESET">

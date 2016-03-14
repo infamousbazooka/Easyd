@@ -2,7 +2,7 @@
 	switch ($_REQUEST["type"]) {
 		case 'edit':
 			echo '<h1>NEW REGISTRATION</h1>
-				<form action="leaveapplication.php">
+				<form action="Project_Management/Time_Tracker/edit.php" method="POST">
 					<section>
 						<input class="fill" type="text" id="date" required placeholder="DATE" name="date">
 						<input class="fill" type="text" id="cname" required placeholder="CLIENT NAME" name="cname">

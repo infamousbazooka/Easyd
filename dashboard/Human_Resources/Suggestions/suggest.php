@@ -7,9 +7,7 @@
 		header('Location: ../../');
 	}
 
-	$empname = $_POST["empname"];
-	$amount = $_POST["amount"];
-	$reason = $_POST["reason"];
+	$complaint = $_POST["compl"];
 
 	$servername = "localhost";
 	$uname = "root";
@@ -21,10 +19,10 @@
 	    die("Connection failed: " . $conn->connect_error);
 	}
 	date_default_timezone_set('Asia/Calcutta');
-	$today = date('Y-m-d');
+	$today = date('Y-m-d H:i:s');
 
-	$sql = "INSERT into incentive (amount, date1, empid, empname, reason)
-	VALUES ('" . $amount . "', '" . $today . "', '" . $username . "', '" . $empname . "', '" . $reason . "')";
+	$sql = "INSERT into complaints (empid, empname, complaint, time1, remarks)
+	VALUES ('" . $username . "', '" . $name . "', '" . $complaint . "', '" . $today . "', 'Yet to Answer')";
 
 	if ($conn->query($sql) === TRUE) {
 	    header('Location: ../../');;

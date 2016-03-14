@@ -2,27 +2,32 @@
 	switch ($_REQUEST["type"]) {
 		case 'update':
 			echo '<h1>INTERVIEW</h1>
-				<form action="leaveapplication.php">
-					<input type="text" name="name" id="name" class="fill" required placeholder="INTERVIEWEE NAME">
-					<article>
-						<h4>DECISION
-						<input type="text" name="email" id="email" required placeholder="DECISION"></h4>
-					</article>
+				<form action="Human_Resources/Interviews/update.php" method="POST">
+					<input type="text" name="name" id="intname" class="fill" required placeholder="INTERVIEWEE NAME">
+					<input type="text" name="decision" id="decision" class="fill" id="decision" required placeholder="DECISION">
 					<article>
 						<h4>UPDATE</h4>
-						<select>
-							<option value="accept">ACCEPT</option>
-							<option value="decline">DECLINE</option>
+						<select name="status">
+							<option value="Accepted">ACCEPT</option>
+							<option value="Declined">DECLINE</option>
 						</select>
 					</article>
 					<article>
 						<input type="submit" value="SUBMIT">
 					</article>
+					<script>
+						$(function() {
+							$(\'#intname\').autocomplete({
+								source: "Human_Resources/Interviews/autocompletename.php",
+								minLength: 2
+							});
+						});
+					</script>
 				</form>';
 			break;
 		case 'new':
 			echo '<h1>INTERVIEW</h1>
-				<form action="leaveapplication.php">
+				<form action="Human_Resources/Interviews/interview.php" method="POST">
 					<section>
 						<input type="text" name="name" id="name" class="fill" required placeholder="NAME">
 						<input type="email" name="email" id="email" class="fill" required placeholder="EMAIL">
@@ -33,21 +38,21 @@
 					</section>
 					<section>
 						<input type="text" name="interby" id="interby" class="fill" required placeholder="INTERVIEWED BY">
-						<input type="text" name="status" id="status" class="fill" required disabled="true" placeholder="STATUS">
+						<input type="text" name="status" id="status" class="fill" required placeholder="STATUS">
 					</section>
 					<article>
 						<h4>CATEGORY</h4>
-						<select id="category">
-							<option value="hr">HUMAN RESOURCES</option>
-							<option value="acc">ACCOUNTS</option>
-							<option value="emp">EMPLOYEE</option>
+						<select id="category" name="category">
+							<option value="HR">HUMAN RESOURCES</option>
+							<option value="Accounts">ACCOUNTS</option>
+							<option value="Employee">EMPLOYEE</option>
 						</select>
 					</article>
 					<article>
 						<h4>POST</h4>
-						<select id="posttype">
-							<option value="hrman">MANAGER</option>
-							<option value="hrexec">EXECUTIVE</option>
+						<select id="posttype" name="posttype">
+							<option value="HR Manager">MANAGER</option>
+							<option value="HR Executive">EXECUTIVE</option>
 						</select>
 					</article>
 					<section>

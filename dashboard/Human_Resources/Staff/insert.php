@@ -1,15 +1,20 @@
 <?php
 	session_start();
 	$username = $_SESSION["username"];
-	$name = $_SESSION["name"];
 
 	if (!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
 		header('Location: ../../');
 	}
 
-	$empname = $_POST["empname"];
-	$amount = $_POST["amount"];
-	$reason = $_POST["reason"];
+	$name = $_POST["name"];
+	$email = $_POST["email"];
+	$address = $_POST["address"];
+	$contact = $_POST["contact"];
+	$bank = $_POST["bank"];
+	$post = $_POST["posttype"];
+	$dob = $_POST["dob"];
+	$join = $_POST["join"];
+	
 
 	$servername = "localhost";
 	$uname = "root";
@@ -22,9 +27,10 @@
 	}
 	date_default_timezone_set('Asia/Calcutta');
 	$today = date('Y-m-d');
+	$time = date('H:i:s');
 
-	$sql = "INSERT into incentive (amount, date1, empid, empname, reason)
-	VALUES ('" . $amount . "', '" . $today . "', '" . $username . "', '" . $empname . "', '" . $reason . "')";
+	$sql = "INSERT into employee_detail (empid, name, email_id, category, address, join_date, contact, time1, dob, bank)
+	VALUES ('" . $username . "', '" . $name . "', '" . $email . "', '" . $post . "', '" . $address . "', '" . $today . "', '" . $contact . "', '" . $time . "', '" . $dob . "', '" . $bank . "')";
 
 	if ($conn->query($sql) === TRUE) {
 	    header('Location: ../../');;

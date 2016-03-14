@@ -1,6 +1,6 @@
 <div class="form">
 	<h1>STAFF REGISTRATION</h1>
-	<form action="leaveapplication.php">
+	<form action="Human_Resources/Staff/insert.php" method="POST">
 		<section>
 			<input class="fill" type="text" id="pname" required placeholder="NAME" name="pname">
 			<input class="fill" type="text" id="workacc" required placeholder="EMAIL" name="workacc">
@@ -14,7 +14,7 @@
 		</section>
 		<article>
 			<h4>CATEGORY</h4>
-			<select id="category">
+			<select id="category" onclick="combo()">
 				<option value="owner">OWNER</option>
 				<option value="hr">HUMAN RESOURCES</option>
 				<option value="acc">ACCOUNTS</option>
@@ -24,13 +24,11 @@
 		<article>
 			<h4>POST</h4>
 			<select id="posttype">
-				<option value="prop">PROPREITOR</option>
+				<option value="Propreitor">PROPREITOR</option>
 			</select>
 		</article>
-		<section>
-			<input class="fill" type="text" id="awacc" required placeholder="ADMIN WORK ACCOMPLISHED" name="awacc">
-			<input class="fill" type="text" id="ope" required placeholder="OPE" name="ope">
-		</section>
+		<input class="fill" type="text" id="dob" required placeholder="DATE OF BIRTH" name="dob">
+		<input class="fill" type="text" id="join" required placeholder="JOINING DATE" name="join">
 		<article>
 			<input type="submit" value="SUBMIT">
 			<input type="reset" value="RESET">

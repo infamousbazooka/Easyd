@@ -2,14 +2,14 @@
 	switch ($_REQUEST["type"]) {
 		case 'initiate':
 			echo '<h1>PROJECT DETAILS</h1>
-				<form action="leaveapplication.php">
+				<form action="Project_Management/On_Project/initiate.php" method="POST">
 					<article>
 						<input class="fill" type="text" id="firmname" required placeholder="FIRM NAME" name="firmname">
 						<input class="fill" type="text" id="projectname" required placeholder="PROJECT NAME" name="projectname">
 					</article>
 					<article>
 						<input class="fill" type="text" id="leader" required placeholder="TEAM LEADER" name="leader">
-						<input class="fill" type="text" id="members" required placeholder="MEMBERS" name="projectname">
+						<input class="fill" type="text" id="members" required placeholder="MEMBERS" name="members">
 					</article>
 					<textarea class="fill" name="description" required placeholder="PROJECT DESCRIPTION"></textarea>
 					<article>
@@ -24,7 +24,7 @@
 			break;
 		case 'clientdetails':
 			echo '<h1>CLIENT DETAILS</h1>
-				<form action="leaveapplication.php">
+				<form action="Project_Management/On_Project/initiate.php" method="POST">
 					<input class="fill" type="text" id="name" required placeholder="CLIENT NAME" name="name">
 					<input class="fill" type="text" id="designation" required placeholder="DESIGNATION" name="designation">
 					<input class="fill" type="tel" id="contact" required placeholder="CONTACT" name="contact">
@@ -37,7 +37,7 @@
 			break;
 		case 'tasks':
 			echo '<h1>TASKS</h1>
-				<form action="leaveapplication.php">
+				<form action="Project_Management/On_Project/initiate.php" method="POST">
 					<article>
 						<input type="button" value="ALLOCATE TASKS" id="allocatetasks">
 						<input type="button" value="VIEW TASKS" id="viewtasks">
@@ -46,7 +46,7 @@
 			break;
 		case 'viewproject':
 			echo '<h1>VIEW PROJECTS</h1>
-				<form action="leaveapplication.php">
+				<form action="Project_Management/On_Project/initiate.php" method="POST">
 					<article>
 						<input type="button" value="PROJECT SUMMARY" id="summary">
 						<input type="button" value="PROJECT DETAILS" id="details">
