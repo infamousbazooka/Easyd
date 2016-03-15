@@ -28,7 +28,7 @@
 			$sql = "SELECT * FROM appraisal";
 			$result = $conn->query($sql);
 			if ($result->num_rows > 0) {
-				echo '<table class="table">
+				echo '<table class="pure-table pure-table-bordered">
 			<tr>
 				<th>PROJECT</th>
 				<th>FEEDBACK</th>

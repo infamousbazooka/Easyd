@@ -101,34 +101,25 @@
 		</section>
 		<section class="body" id="body">
 			<div class="form">
-				<h1>EXISTING PROJECT</h1>
+				<h1>ADD STOCKS</h1>
 				<form action="Project_Management/Postproject/update.php" method="POST">
-					<input class="fill" type="text" id="firmname" required placeholder="FIRM NAME" name="firmname">
-					<input class="fill" type="text" id="projectname" required placeholder="PROJECT NAME" name="projectname">
-					<article>
-						<input type="button" value="GET STATUS">
-					</article>
-					<div class="box">
-						<h4>CHECKLIST</h4>
-						<label class="check">
-							<h4><input type="checkbox" name="admin" id="admin"> ADMIN APPROVED</h4>
-						</label>
-						<label class="check">
-							<h4><input type="checkbox" name="client" id="client"> CLIENT APPROVED</h4>
-						</label>
-						<label class="check">
-							<h4><input type="checkbox" name="copies" id="copies"> HARD COPIES FILED</h4>
-						</label>
-						<label class="check">
-							<h4><input type="checkbox" name="invoice" id="invoice"> INVOICE RAISED</h4>
-						</label>
-						<label class="check">
-							<h4><input type="checkbox" name="pay" id="pay"> PAYMENT RECEIVED</h4>
-						</label>
+					<h4 class="radio"><label><input type="radio" checked onclick="radioCheck()" id="item" name="leadtype" value="item"> ITEM WISE</label></h4>
+					<h4 class="radio"><label><input type="radio" onclick="radioCheck()" id="elead" name="leadtype" value="gen"> GENERAL</label></h4>
+					<div class="box" id="stocke">
 						<article>
-							<input type="submit" value="SUBMIT">
-							<input type="reset" value="CLEAR">
+							<h4>ITEM TYPE</h4>
+							<select name="category">
+								<option value="stationery">STATIONERY</option>
+								<option value="furniture">FURNITURE</option>
+								<option value="electronics">ELECTRONICS</option>
+								<option value="miscellaneous">MISCELLANEOUS</option>
+							</select>
 						</article>
+						<input class="fill" type="text" id="name" required placeholder="ITEM NAME" name="name">
+					</div>
+					<article>
+						<input type="submit" value="VIEW">
+					</article>
 					</div>
 				</form>
 			</div>

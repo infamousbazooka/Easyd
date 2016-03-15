@@ -7,19 +7,19 @@
 		header('Location: ../../');
 	}
 
-	$from = $_POST["from"];
-	$to = $_POST["to"];
-	$reason = $_POST["reason"];
+	$item = $_POST["name"];
+	$description = $_POST["desc"];
+	$category = $_POST["category"];
+	$quantity = $_POST["qty"];
+	$price = $_POST["price"];
+	$purchase_date = $_POST["pur"];
+	$buffer = $_POST["buffer"];
 
 	require "C:/xampp/htdocs/easyd/connect.php";
-	$date1 = new DateTime($from);
-	$date2 = new DateTime($to);
-	$diff = $date1->diff($date2);
-	$days = $diff->format('%a');
 	date_default_timezone_set('Asia/Calcutta');
 	$today = $date = date('Y-m-d H:i:s');
 
-	$sql = "INSERT into leave_applications (empid, empname, from1, to1, application_date, approval_status, reason, num_days)VALUES ('" . $username . "', '" . $name . "', '" . $from . "', '" . $to . "', '" . $today . "', 'pending', '" . $reason . "', '" . $days . "')";
+	$sql = "INSERT into stock_details (item, description, category, quantity, price, purchase_date, buffer)VALUES ('" . $item . "', '" . $description . "', '" . $category . "', '" . $quantity . "', '" . $price . "', '" . $purchase_date . "', '" . $buffer . "')";
 
 	if ($conn->query($sql) === TRUE) {
 	    header('Location: ../../');;

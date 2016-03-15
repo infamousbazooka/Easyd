@@ -12,9 +12,6 @@ $(document).ready(function() {
 			$('#viewindi').removeAttr('disabled');
 		}
 	});
-	$('#viewindi').click(function(event) {
-		viewindi();
-	});
 });
 $(window).resize(function() {
 
@@ -51,6 +48,30 @@ function viewind() {
 		$('#display').load(file, {"name":name, "month":month, "year":year});
 	} 
 }
+function getstock() {
+	file = "http://localhost/easyd/dashboard/Inventory/Stock/view.php";
+	type = $('input[name=leadtype]:checked').val();
+	category = $('#category').val();
+	name = $('#name').val();
+	if (type != 'item'){
+		$('#display').load(file);
+	}
+	else {
+		$('#display').load(file, {"name":name, "category":category, "type":type});
+	} 
+}
+function gethistory() {
+	file = "http://localhost/easyd/dashboard/Inventory/Stock/history.php";
+	type = $('input[name=leadtype]:checked').val();
+	category = $('#category').val();
+	name = $('#name').val();
+	if (type != 'item'){
+		$('#display').load(file);
+	}
+	else {
+		$('#display').load(file, {"name":name, "category":category, "type":type});
+	} 
+}
 function checkPasswordMatch() {
     var password = $("#pass").val();
     var confirmPassword = $("#rpass").val();
@@ -76,6 +97,12 @@ function radioCheck () {
 		}
 		if($(this).attr("value")=="general"){
 			$("#sectortype").hide();
+		}
+		if($(this).attr("value")=="item"){
+			$("#stocke").show();
+		}
+		if($(this).attr("value")=="gen"){
+			$("#stocke").hide();
 		}
 		if($(this).attr("value")=="individual"){
 			$("#empname").show();

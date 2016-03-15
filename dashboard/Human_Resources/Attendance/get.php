@@ -11,15 +11,7 @@
 		$flag = 0;
 	}
 
-	$servername = "localhost";
-	$uname = "root";
-	$pword = "";
-	$dbname = "easyd";
-
-	$conn = new mysqli($servername, $uname, $pword, $dbname);
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
+	require "C:/xampp/htdocs/easyd/connect.php";
 	if ($flag == 1) {
 		$sql = "SELECT * FROM leave_applications WHERE empname='" . $tname . "'";
 	}
@@ -28,7 +20,7 @@
 	}
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
-		echo '<table class="table">
+		echo '<table class="pure-table pure-table-bordered">
 		<tr>
 			<th>FROM</th>
 			<th>TO</th>

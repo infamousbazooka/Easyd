@@ -24,7 +24,7 @@
 	}
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
-		echo '<table class="table">
+		echo '<table class="pure-table pure-table-bordered">
 	<tr>
 		<th>EMPID</th>
 		<th>NAME</th>
