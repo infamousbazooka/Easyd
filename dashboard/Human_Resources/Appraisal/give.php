@@ -31,7 +31,7 @@
 	$today = $date = date('d-m-Y');
 
 	$sql = "INSERT into appraisal (emp_name, pro_name, feedback, owner, formating, enthusiasm, detail, submitted_by, time1, client_remarks, firmname, adminremark)
-	VALUES ('" . $username . "', '" . $pro_name . "', '" . $feedback . "', '" . $owner . "', '" . $formating . "', '" . $enthusiasm . "', '" . $detail . "', '" . $submitted_by . "', '" . $today . "', '" . $client_remarks . "', '" . $firmname . "', '" . $adminremark . "')";
+	VALUES ('" . $name . "', '" . $pro_name . "', '" . $feedback . "', '" . $owner . "', '" . $formating . "', '" . $enthusiasm . "', '" . $detail . "', '" . $submitted_by . "', '" . $today . "', '" . $client_remarks . "', '" . $firmname . "', '" . $adminremark . "')";
 
 	if ($conn->query($sql) === TRUE) {
 	    header('Location: ../../');;

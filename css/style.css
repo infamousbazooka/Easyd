@@ -28,6 +28,10 @@ body{
 .img-responsive{
 	width: 100%;
 }
+.th{
+	background-color: rgb(34, 45, 47) !important;
+	color: rgb(255, 255, 255) !important;
+}
 .head{
 	margin-bottom: 10px;
 }

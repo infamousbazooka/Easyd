@@ -17,7 +17,39 @@
 				</form>';
 			break;
 		case 'view':
-			echo '';
+				require "C:/xampp/htdocs/easyd/connect.php";
+				$sql = "SELECT * FROM meeting_details";
+				$result = $conn->query($sql);
+				if ($result->num_rows > 0) {
+					echo '<table class="pure-table pure-table-bordered">
+				<tr class="th">
+					<th>PROJECT NAME</th>
+					<th>MEMBERS REQUIRED</th>
+					<th>MEETING AGENDA</th>
+					<th>DATE</th>
+					<th>TIME</th>
+					<th>MEETING MINUTES</th>
+					<th>ORGANISED BY</th>
+					<th>RECORDED AT</th>
+				</tr>';
+				    while($row = $result->fetch_assoc()) {
+				    	echo '<tr>
+					<td>' . $row["project_name"] . '</td>
+					<td>' . $row["members"] . '</td>
+					<td>' . $row["meet_agenda"] . '</td>
+					<td>' . $row["meet_date"] . '</td>
+					<td>' . $row["meet_time"] . '</td>
+					<td>' . $row["meet_minutes"] . '</td>
+					<td>' . $row["meet_convenor"] . '</td>
+					<td>' . $row["meet_addtime"] . '</td>
+				</tr>';
+				    }
+				}
+				else{
+					echo "NO TABLES FOUND";
+				}
+				echo "</table>";
+				$conn->close();
 			break;
 		default:
 			echo "nothin";

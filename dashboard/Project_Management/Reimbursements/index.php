@@ -42,7 +42,52 @@
 				</form>';
 			break;
 		case 'view':
-			echo '';
+				require "C:/xampp/htdocs/easyd/connect.php";
+				$sql = "SELECT * FROM reimburse_expenses";
+				$result = $conn->query($sql);
+				if ($result->num_rows > 0) {
+					echo '<table class="pure-table pure-table-bordered">
+						<tr class="th">
+							<th>ID</th>
+							<th>EMPNAME</th>
+							<th>FROM</th>
+							<th>TO</th>
+							<th>EXPENSE TYPE</th>
+							<th>EXPENSE NATURE</th>
+							<th>MODE</th>
+							<th>DAYS</th>
+							<th>DISTANCE</th>
+							<th>PRICE</th>
+							<th>AMOUNT</th>
+							<th>INVOICE NO</th>
+							<th>DETAILS</th>
+						</tr>';
+				    while($row = $result->fetch_assoc()) {
+						echo '<tr>
+							<td>' . $row["id"] . '</td>
+							<td>' . $row["empname"] . '</td>
+							<td>' . $row["date_from"] . '</td>
+							<td>' . $row["date_to"] . '</td>
+							<td>' . $row["expense_type"] . '</td>
+							<td>' . $row["expense_nature"] . '</td>
+							<td>' . $row["mode"] . '</td>
+							<td>' . $row["days"] . '</td>
+							<td>' . $row["distance"] . '</td>
+							<td>' . $row["price"] . '</td>
+							<td>' . $row["amount"] . '</td>
+							<td>' . $row["invoice_no"] . '</td>
+							<td>' . $row["details"] . '</td>
+							</tr>';
+					}
+				}
+				else{
+					echo "NO TABLES FOUND";
+				}
+				echo "</table>";
+				$conn->close();
+				break;
+			default:
+				echo "nothin";
 			break;
 		default:
 			echo "nothin";

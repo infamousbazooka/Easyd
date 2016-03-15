@@ -24,7 +24,41 @@
 				</form>';
 			break;
 		case 'view':
-			echo '';
+			require "C:/xampp/htdocs/easyd/connect.php";
+			$sql = "SELECT * FROM appraisal";
+			$result = $conn->query($sql);
+			if ($result->num_rows > 0) {
+				echo '<table class="table">
+			<tr>
+				<th>PROJECT</th>
+				<th>FEEDBACK</th>
+				<th>OWNER</th>
+				<th>FORMATTING</th>
+				<th>ENTHUSIASM</th>
+				<th>DETAIL</th>
+				<th>SUBMITTED BY</th>
+				<th>CLIENT REMARKS</th>
+				<th>ADMIN REMARKS</th>
+			</tr>';
+			    while($row = $result->fetch_assoc()) {
+			    	echo '<tr>
+				<td>' . $row["pro_name"] . '</td>
+				<td>' . $row["feedback"] . '</td>
+				<td>' . $row["owner"] . '</td>
+				<td>' . $row["formating"] . '</td>
+				<td>' . $row["enthusiasm"] . '</td>
+				<td>' . $row["detail"] . '</td>
+				<td>' . $row["submitted_by"] . '</td>
+				<td>' . $row["client_remarks"] . '</td>
+				<td>' . $row["adminremark"] . '</td>
+			</tr>';
+			    }
+			}
+			else{
+				echo "NO TABLES FOUND";
+			}
+			echo "</table>";
+			$conn->close();
 			break;
 		default:
 			echo "nothin";

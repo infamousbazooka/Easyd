@@ -7,14 +7,15 @@
 		header('Location: ../../');
 	}
 
-	$complaint = $_POST["compl"];
+	$firmname = $_POST["firmname"];
+	$projectname = $_POST["projectname"];
+	$status = $_POST["status"];
 
 	require "C:/xampp/htdocs/easyd/connect.php";
 	date_default_timezone_set('Asia/Calcutta');
 	$today = date('Y-m-d H:i:s');
 
-	$sql = "INSERT into complaints (empid, empname, complaint, time1, remarks)
-	VALUES ('" . $username . "', '" . $name . "', '" . $complaint . "', '" . $today . "', 'Yet to Answer')";
+	$sql = "UPDATE pre_project SET pro_status='" . $status . "' WHERE firmname='" . $firmname . "' AND pro_name='" . $projectname . "'";
 
 	if ($conn->query($sql) === TRUE) {
 	    header('Location: ../../');;

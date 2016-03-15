@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="../css/font-awesome.min.css">
 	<link rel="stylesheet" href="../css/jquery-ui.min.css">
 	<link rel="stylesheet" href="../css/dashboard.css">
+	<link rel="stylesheet" href="../css/pure-min.css">
 	<script src="../js/lib/jquery.min.js"></script>
 	<script src="../js/lib/jquery-ui.min.js"></script>
 	<script src="../js/main.js"></script>
@@ -86,8 +87,8 @@
 				</h4></a></li>
 				<li><a href="#"><h4 class="h4"><i class="fa fa-asterisk"></i>INVENTORY
 					<ul class="inner-ul">
-						<li><a href="#"><h4>STOCK DETAILS</h4></a></li>
-						<li><a href="#"><h4>ITEMS TO BE PURCHASED</h4></a></li>
+						<li><h4 onclick="getType('inventory', 'stock')">STOCK DETAILS</h4></li>
+						<li><h4 onclick="getType('inventory', 'items')">ITEMS TO BE PURCHASED</h4></li>
 					</ul>
 				</h4></a></li>
 				<li><a href="#"><h4 class="h4"><i class="fa fa-asterisk"></i>EMPLOYEE REGISRATION
@@ -100,8 +101,36 @@
 		</section>
 		<section class="body" id="body">
 			<div class="form">
-				<h1>Suggestions</h1>
-				
+				<h1>EXISTING PROJECT</h1>
+				<form action="Project_Management/Postproject/update.php" method="POST">
+					<input class="fill" type="text" id="firmname" required placeholder="FIRM NAME" name="firmname">
+					<input class="fill" type="text" id="projectname" required placeholder="PROJECT NAME" name="projectname">
+					<article>
+						<input type="button" value="GET STATUS">
+					</article>
+					<div class="box">
+						<h4>CHECKLIST</h4>
+						<label class="check">
+							<h4><input type="checkbox" name="admin" id="admin"> ADMIN APPROVED</h4>
+						</label>
+						<label class="check">
+							<h4><input type="checkbox" name="client" id="client"> CLIENT APPROVED</h4>
+						</label>
+						<label class="check">
+							<h4><input type="checkbox" name="copies" id="copies"> HARD COPIES FILED</h4>
+						</label>
+						<label class="check">
+							<h4><input type="checkbox" name="invoice" id="invoice"> INVOICE RAISED</h4>
+						</label>
+						<label class="check">
+							<h4><input type="checkbox" name="pay" id="pay"> PAYMENT RECEIVED</h4>
+						</label>
+						<article>
+							<input type="submit" value="SUBMIT">
+							<input type="reset" value="CLEAR">
+						</article>
+					</div>
+				</form>
 			</div>
 		</section>
 		<section class="footer">
