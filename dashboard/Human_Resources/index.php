@@ -77,7 +77,8 @@
 			echo ('<div class="form">
 				<h1>UPLOAD CIRCULAR</h1>
 				<form action="Human_Resources/Circular/upload.php" method="POST" enctype="multipart/form-data">
-					<input type="file" name="cirfile">
+					<input class="fill" name="title" placeholder="TITLE" required>
+					<input type="file" required name="cirfile">
 					<article>
 						<input type="submit" value="UPLOAD">
 					</article>
@@ -178,11 +179,11 @@
 		<input class="fill" type="text" id="to" required placeholder="JOINING DATE" name="join">
 		<article class="file">
 			<h4>Qualification Document</h4>
-			<input type="file" name="quafile" id="quafile">
+			<input type="file" required name="quafile" id="quafile">
 		</article>
 		<article class="file">
 			<h4>Your CV</h4>
-			<input type="file" name="cvfile" id="cvfile">
+			<input type="file" required name="cvfile" id="cvfile">
 		</article>
 		<article>
 			<input type="submit" value="SUBMIT">

@@ -20,10 +20,6 @@
 	} else {
 	    $flag=1;
 	}
-
-
-
-
 	session_start();
 	$username = $_SESSION["username"];
 	$name = $_SESSION["name"];
@@ -32,17 +28,15 @@
 		header('Location: ../../');
 	}
 
-	$from = $_POST["from"];
-	$to = $_POST["to"];
-	$reason = $_POST["reason"];
+	$title = $_POST["title"];
 
 	require "C:/xampp/htdocs/easyd/connect.php";
 	$sql = "INSERT into circular (title, link)
-	VALUES ('" . $username . "', '" . $target_file . "')";
+	VALUES ('" . $title . "', '" . $target_file . "')";
 
 	if ($conn->query($sql) === TRUE) {
 		if ($flag == 1) {
-			if (move_uploaded_file($_FILES["cirfile"]["tmp_name"], $target_file)) {
+			if (move_uploaded_file($_FILES["cirfile"]["tmp_name"], "C:/xampp/htdocs/easyd/document/circular/".$title)) {
 				    header('Location: ../../');
 				} else {
 					echo "Sorry, there was an error uploading your file.";

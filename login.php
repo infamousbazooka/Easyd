@@ -1,4 +1,7 @@
 <?php
+	
+	$username = $_POST["username"];
+	$password = $_POST["password"];
 	require "C:/xampp/htdocs/easyd/connect.php";
 	$sql = "SELECT name, password, empid FROM registration_sftwre";
 	$result = $conn->query($sql);

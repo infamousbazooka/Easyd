@@ -123,7 +123,7 @@ function radioCheck () {
 			$("#empname").hide();
 		}
 		if($(this).attr("value")=="indiv"){
-			$("#empname").show();
+			$(".box").show();
 			if ($('#empname').val() == "") {
 				$('#viewindi').attr('disabled', 'disabled');
 			}
@@ -131,7 +131,7 @@ function radioCheck () {
 		if($(this).attr("value")=="comp"){
 			$('#empname').val("");
 			$('#viewindi').removeAttr('disabled');
-			$("#empname").hide();
+			$(".box").hide();
 		}
 	});
 }
@@ -350,5 +350,31 @@ function add () {
 	var total = Number(quota) + Number(newq);
 	$('#tleaves').val(total);
 }
+function perfatten() {
+	file = "http://localhost/easyd/dashboard/Performance/Manage/get.php";
+	name = $('#empname').val();
+	month = $('#month').val();
+	year = $('#year').val();
+	if (name == "") {
+		console.log('runn');
+		$('#display').load(file, {"month":month, "year":year});
+	}
+	else {
+		$('#display').load(file, {"name":name, "month":month, "year":year});
+	} 
+}
 
-
+function perfproj() {
+	file = "http://localhost/easyd/dashboard/Performance/Manage/view.php";
+	type = $('input[name=leavereg]:checked').val();
+	empname = $('#empname').val();
+	clientname = $('#clientname').val();
+	projname = $('#projname').val();
+	if (type == "indiv") {
+		console.log('runn');
+		$('#display').load(file, {"empname":empname, "clientname":clientname, "projname":projname});
+	}
+	else {
+		$('#display').load(file);
+	} 
+}
