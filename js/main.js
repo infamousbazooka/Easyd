@@ -166,6 +166,9 @@ function getForm(type, sub){
 		case 'timetracker':
 			file = "Project_Management/Time_Tracker/";
 			break;
+		case 'perf':
+			file = "Performance/Manage/";
+			break;
 		case 'postproject':
 			file = "Project_Management/Postproject/";
 			break;
@@ -212,6 +215,9 @@ function getType(type, sub){
 			break;
 		case 'inventory':
 			file = 'Inventory/';
+			break;
+		case 'perf':
+			file = 'Performance/';
 			break;
 		case 'empreg':
 			file = 'Employee_Registration/';

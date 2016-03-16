@@ -1,7 +1,4 @@
 <?php
-function phpAlert($msg) {
-    echo '<script type="text/javascript">alert("' . $msg . '")</script>';
-}
 session_start();
 
 if (!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
@@ -23,18 +20,28 @@ if ($result->num_rows > 0) {
     }
 }
 if ($quantity != $qty) {
-	die("DO NOT OVERWRITE CURRENT QUANTITY VALUE");
+    die("DO NOT OVERWRITE CURRENT QUANTITY VALUE");
+}elseif ($qty <= 0) {
+    die("The item you requested has finished.");
 }
+$new = $quantity - $cquantity;
+// if ($new<=$buffer) {
+//     echo "nsdkndk";
+// }
+if ($new < 0) {
+    die("Sorry! The quantity you require is not available. Please select a different quantity.");
+}
+date_default_timezone_set('Asia/Calcutta');
+$today = $date = date('Y-m-d H:i:s');
+$sql = "INSERT into stock_consumed (item, quantity, time1, category, buffer)
+VALUES ('" . $item . "', '" . $quantity . "', '" . $today . "', '" . $category . "', '" . $buffer . "')";
+$result = $conn->query($sql);
 $quantity = $quantity - $cquantity;
-if ($quantity<=$buffer) {
-	phpAlert("BUFFER ALERT");
-}
 $sql = "UPDATE stock_details SET quantity='" . $quantity . "' WHERE item='" . $item . "' AND category='" . $category . "'";
-if ($conn->query($sql) === TRUE) {
-	    header('Location: ../../');
-} else {
-    die( "Error updating record: " . $conn->error);
-}
 
+if ($conn->query($sql) === TRUE) {
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 $conn->close();
 ?>

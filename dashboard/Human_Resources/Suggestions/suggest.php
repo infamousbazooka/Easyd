@@ -17,7 +17,7 @@
 	VALUES ('" . $username . "', '" . $name . "', '" . $complaint . "', '" . $today . "', 'Yet to Answer')";
 
 	if ($conn->query($sql) === TRUE) {
-	    header('Location: ../../');;
+	    header('Location: ../../');
 	} else {
 	    echo "Error: " . $sql . "<br>" . $conn->error;
 	}

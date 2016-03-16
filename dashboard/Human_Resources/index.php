@@ -76,7 +76,8 @@
 		case 'circular':
 			echo ('<div class="form">
 				<h1>UPLOAD CIRCULAR</h1>
-				<form action="leaveapplication.php">
+				<form action="Human_Resources/Circular/upload.php" method="POST" enctype="multipart/form-data">
+					<input type="file" name="cirfile">
 					<article>
 						<input type="submit" value="UPLOAD">
 					</article>
@@ -146,7 +147,7 @@
 		case 'staff':
 			echo '<div class="form">
 	<h1>STAFF REGISTRATION</h1>
-	<form action="Human_Resources/Staff/insert.php" method="POST">
+	<form action="Human_Resources/Staff/insert.php" method="POST" enctype="multipart/form-data">
 		<section>
 			<input class="fill" type="text" id="pname" required placeholder="NAME" name="name">
 			<input class="fill" type="email" id="email" required placeholder="EMAIL" name="email">
@@ -175,6 +176,14 @@
 		</article>
 		<input class="fill" type="text" id="from" required placeholder="DATE OF BIRTH" name="dob">
 		<input class="fill" type="text" id="to" required placeholder="JOINING DATE" name="join">
+		<article class="file">
+			<h4>Qualification Document</h4>
+			<input type="file" name="quafile" id="quafile">
+		</article>
+		<article class="file">
+			<h4>Your CV</h4>
+			<input type="file" name="cvfile" id="cvfile">
+		</article>
 		<article>
 			<input type="submit" value="SUBMIT">
 			<input type="reset" value="RESET">

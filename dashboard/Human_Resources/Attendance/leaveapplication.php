@@ -22,7 +22,7 @@
 	$sql = "INSERT into leave_applications (empid, empname, from1, to1, application_date, approval_status, reason, num_days)VALUES ('" . $username . "', '" . $name . "', '" . $from . "', '" . $to . "', '" . $today . "', 'pending', '" . $reason . "', '" . $days . "')";
 
 	if ($conn->query($sql) === TRUE) {
-	    header('Location: ../../');;
+	    header('Location: ../../');
 	} else {
 	    echo "Error: " . $sql . "<br>" . $conn->error;
 	}

@@ -33,6 +33,12 @@ body{
 table a{
 	color: #f25050;
 }
+.file h4{
+	width: 40% !important;
+}
+.file input{
+	width: 57% !important;
+}
 #display{
 	margin-bottom: 20px;
 }
