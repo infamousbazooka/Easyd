@@ -30,6 +30,9 @@ body{
 	background-image: url(../images/bkg1.png);
 	background-repeat: repeat;
 }
+table a{
+	color: #f25050;
+}
 #display{
 	margin-bottom: 20px;
 }

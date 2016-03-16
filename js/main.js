@@ -24,6 +24,17 @@ function checkviewindi () {
 		$('#viewindi').removeAttr('disabled');
 	}
 }
+function viewclient () {
+	file = "CRM/Clist/view.php";
+	sector = $('#sectortype').val();
+	type = $('input[name=vclient]:checked').val();
+	if (type != "sector") {
+		$('#display').load(file);
+	}
+	else {
+		$('#display').load(file, {"sector":sector});
+	}
+}
 function viewpro () {
 	file = "Human_Resources/Profile/get.php";
 	name = $('#empname').val();
@@ -323,3 +334,15 @@ function combo() {
 	 				break;
 	 		} 
 }
+
+function giveattendance () {
+	$('#form').load('Human_Resources/Attendance/giveattendance.php');
+}
+function add () {
+	var quota = $('#eleaves').val();
+	var newq = $('#nleaves').val();
+	var total = Number(quota) + Number(newq);
+	$('#tleaves').val(total);
+}
+
+

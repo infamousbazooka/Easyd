@@ -15,17 +15,8 @@
 	$service = $_POST["service"];
 	$comments = $_POST["comments"];
 	$sector = $_POST["sector"];
-
-	$servername = "localhost";
-	$uname = "root";
-	$pword = "";
-	$dbname = "easyd";
-	$time = date('H:i:s');
-
-	$conn = new mysqli($servername, $uname, $pword, $dbname);
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
+	
+	require "C:/xampp/htdocs/easyd/connect.php";
 
 	$sql = "INSERT into clients (name, firm_name, desig, email, address, phone1, proj_associated, service, comments, entered_by, entry_time, sector)
 	VALUES ('" . $name . "', '" . $firm_name . "', '" . $desig . "', '" . $email . "', '" . $address . "', '" . $phone1 . "', '" . $proj_associated . "', '" . $service . "', '" . $comments . "', '" . $username . "', '" . $time . "', '" . $sector . "')";

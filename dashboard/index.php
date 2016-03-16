@@ -46,7 +46,7 @@
 							<i class="fa fa-archive"></i>HUMAN RESOURCES
 							<ul class="inner-ul">
 								<li><h4 onclick="getType('hr','attendance')">ATTENDANCE</h4></li>
-								<li><h4 onclick="getType('hr','ask')">PAYROLL</h4></li>
+								<li><h4 onclick="getType('hr','payroll')">PAYROLL</h4></li>
 								<li><h4 onclick="getType('hr','biodata')">BIO-DATA</h4></li>
 								<li><h4 onclick="getType('hr','incentives')">INCENTIVES</h4></li>
 								<li><h4 onclick="getType('hr','appraisal')">APPRAISAL</h4></li>
@@ -100,29 +100,6 @@
 			</ul>
 		</section>
 		<section class="body" id="body">
-			<div class="form">
-				<h1>ADD STOCKS</h1>
-				<form action="Project_Management/Postproject/update.php" method="POST">
-					<h4 class="radio"><label><input type="radio" checked onclick="radioCheck()" id="item" name="leadtype" value="item"> ITEM WISE</label></h4>
-					<h4 class="radio"><label><input type="radio" onclick="radioCheck()" id="elead" name="leadtype" value="gen"> GENERAL</label></h4>
-					<div class="box" id="stocke">
-						<article>
-							<h4>ITEM TYPE</h4>
-							<select name="category">
-								<option value="stationery">STATIONERY</option>
-								<option value="furniture">FURNITURE</option>
-								<option value="electronics">ELECTRONICS</option>
-								<option value="miscellaneous">MISCELLANEOUS</option>
-							</select>
-						</article>
-						<input class="fill" type="text" id="name" required placeholder="ITEM NAME" name="name">
-					</div>
-					<article>
-						<input type="submit" value="VIEW">
-					</article>
-					</div>
-				</form>
-			</div>
 		</section>
 		<section class="footer">
 			<p>Footer text here.</p>

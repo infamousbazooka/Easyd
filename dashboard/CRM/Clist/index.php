@@ -1,21 +1,34 @@
 <?php
 	switch ($_REQUEST["type"]) {
 		case 'viewclient':
+			$sector = array();
+			require "C:/xampp/htdocs/easyd/connect.php";
+			$sql = "SELECT DISTINCT sector FROM clients";
+			$result = $conn->query($sql);
+			if ($result->num_rows > 0) {
+			    while($row = $result->fetch_assoc()) {
+			    	array_push($sector, $row["sector"]);
+			    }
+			}
+			else{
+				die("ERROR");
+			}
+			$conn->close();
 			echo '<h1>VIEW CLIENT</h1>
-				<form action="CRM/Clist/view.php" method="POST">
-					<h4 class="radio"><label><input type="radio" onclick="radioCheck()" id="sector" name="vclient" value="sector"> BASED ON SECTOR</label></h4>
+				<form action="">
+					<h4 class="radio"><label><input type="radio" checked onclick="radioCheck()" id="sector" name="vclient" value="sector"> BASED ON SECTOR</label></h4>
 					<h4 class="radio"><label><input type="radio" onclick="radioCheck()" id="general" name="vclient" value="general"> GENERAL</label></h4>
-					<select id="sectortype">
-						<option value="volvo">Volvo</option>
-						<option value="saab">Saab</option>
-						<option value="mercedes">Mercedes</option>
-						<option value="audi">Audi</option>
-					</select>
+					<select id="sectortype" name="sector">
+						';
+			for ($i=0; $i < sizeof($sector); $i++) { 
+				echo '<option value="' . $sector[$i] . '">' . $sector[$i] . '</option>';
+			}
+			echo '</select>
 					<article>
-						<input type="submit" value="VIEW">
-						<input type="reset" value="RESET">
+						<input type="button" onclick="viewclient()" value="VIEW">
 					</article>
-				</form>';
+				</form>
+				<div id="display"></div>';
 			break;
 		
 		case 'newclient':

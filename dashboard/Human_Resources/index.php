@@ -6,9 +6,18 @@
 						<h4 onclick="getForm(\'attendance\', \'leave\')">APPLY FOR LEAVE</h4>
 						<h4 onclick="getForm(\'attendance\', \'lreg\')">LEAVE REGISTER</h4>
 						<h4 onclick="getForm(\'attendance\', \'attreg\')">COMPANY ATTENDANCE REGISTER</h4>
-						<h4 onclick="getForm(\'attendance\', \'gatt\')">GIVE ATTENDANCE</h4>
+						<h4 onclick="giveattendance()">GIVE ATTENDANCE</h4>
 						<h4 onclick="getForm(\'attendance\', \'leaveapp\')">LEAVE APPLICATIONS</h4>
 						<h4 onclick="getForm(\'attendance\', \'update\')">UPDATE LEAVE QUOTA</h4>
+					</div>
+					<div id="form" class="form"></div>');
+			break;
+		case 'payroll':
+			echo ('<div class="title"><h1>PAYROLL</h1></div>
+					<div class="links">
+						<h4 onclick="getForm(\'payroll\', \'sreg\')">YOUR SALARY REGISTER</h4>
+						<h4 onclick="getForm(\'payroll\', \'creg\')">COMPANY SALARY REGISTER</h4>
+						<h4 onclick="getForm(\'payroll\', \'add\')">ADD SALARIES</h4>
 					</div>
 					<div id="form" class="form"></div>');
 			break;
@@ -16,6 +25,29 @@
 			echo ('<div class="form">
 				<h1>BIO-DATA</h1>
 			</div>');
+			require "C:/xampp/htdocs/easyd/connect.php";
+			$sql = "SELECT empid, name, cv_path FROM employee_detail";
+			$result = $conn->query($sql);
+			if ($result->num_rows > 0) {
+				echo '<table class="pure-table pure-table-bordered">
+				<tr>
+					<th>EMPID</th>
+					<th>NAME</th>
+					<th>CV PATH</th>
+				</tr>';
+			    while($row = $result->fetch_assoc()) {
+			    	echo '<tr>
+				<td>' . $row["empid"] . '</td>
+				<td>' . $row["name"] . '</td>
+				<td><a href="' . $row["cv_path"] . '">' . $row["cv_path"] . '</a></td>
+			</tr>';
+			    }
+			}
+			else{
+				echo "NO TABLES FOUND";
+			}
+			echo "</table>";
+			$conn->close();
 			break;
 		case 'incentives':
 			echo ('<div class="form">
@@ -49,8 +81,29 @@
 						<input type="submit" value="UPLOAD">
 					</article>
 				</form>
-				<h1>VIEW/DOWNLOAD CIRCULAR</h1>
-			</div>');
+				<h1>VIEW/DOWNLOAD CIRCULAR</h1>');
+			require "C:/xampp/htdocs/easyd/connect.php";
+			$sql = "SELECT * FROM circular";
+			$result = $conn->query($sql);
+			if ($result->num_rows > 0) {
+				echo '<table class="pure-table pure-table-bordered">
+				<tr>
+					<th>LINK FOR CIRCULAR</th>
+					<th>CODE</th>
+				</tr>';
+			    while($row = $result->fetch_assoc()) {
+			    	echo '<tr>
+				<td>' . $row["link"] . '</td>
+				<td><a href="' . $row["link"] . '">' . $row["link"] . '</a></td>
+			</tr>';
+			    }
+			}
+			else{
+				echo "NO TABLES FOUND";
+			}
+			echo "</table>";
+			$conn->close();
+			echo('</div>');
 			break;
 		case 'appraisal':
 			echo ('<div class="title"><h1>APPRAISAL</h1></div>

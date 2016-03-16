@@ -1,17 +1,5 @@
 <?php
-	$username = $_POST["username"];
-	$password = $_POST["password"];
-
-	$servername = "localhost";
-	$uname = "root";
-	$pword = "";
-	$dbname = "easyd";
-
-	$conn = new mysqli($servername, $uname, $pword, $dbname);
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	} 
-
+	require "C:/xampp/htdocs/easyd/connect.php";
 	$sql = "SELECT name, password, empid FROM registration_sftwre";
 	$result = $conn->query($sql);
 

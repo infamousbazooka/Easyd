@@ -16,15 +16,7 @@
 	$join = $_POST["join"];
 	
 
-	$servername = "localhost";
-	$uname = "root";
-	$pword = "";
-	$dbname = "easyd";
-
-	$conn = new mysqli($servername, $uname, $pword, $dbname);
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
+	require "C:/xampp/htdocs/easyd/connect.php";
 	date_default_timezone_set('Asia/Calcutta');
 	$today = date('Y-m-d');
 	$time = date('H:i:s');
@@ -33,9 +25,9 @@
 	VALUES ('" . $username . "', '" . $name . "', '" . $email . "', '" . $post . "', '" . $address . "', '" . $today . "', '" . $contact . "', '" . $time . "', '" . $dob . "', '" . $bank . "')";
 
 	if ($conn->query($sql) === TRUE) {
-	    header('Location: ../../');;
+		header('Location: ../../');;
 	} else {
-	    echo "Error: " . $sql . "<br>" . $conn->error;
+		echo "Error: " . $sql . "<br>" . $conn->error;
 	}
 
 	$conn->close();
