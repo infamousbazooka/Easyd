@@ -142,6 +142,9 @@ function getForm(type, sub){
 		case 'attendance':
 			file = "Human_Resources/Attendance/";
 			break;
+		case 'payroll':
+			file = "Human_Resources/Payroll/";
+			break;
 		case 'interview':
 			file = "Human_Resources/Interviews/";
 			break;
@@ -377,4 +380,12 @@ function perfproj() {
 	else {
 		$('#display').load(file);
 	} 
+}
+
+function viewflist() {
+	file = "http://localhost/easyd/dashboard/CRM/Flist/view.php";
+	fname = $('#fname').val();
+	prname = $('#prname').val();
+	pname = $('#pname').val();
+	$('#display').load(file, {"fname":fname, "prname":prname, "pname":pname});
 }

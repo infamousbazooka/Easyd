@@ -11,7 +11,7 @@ $quota = $_POST["quota"];
 $qwe = $_POST["empname"];
 require "C:/xampp/htdocs/easyd/connect.php";
 
-$sql = "SELECT * from leave_quota WHERE empid = ''";
+$sql = "SELECT * from leave_quota WHERE empid = '" . $id . "'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {

@@ -27,7 +27,34 @@
 						<input type="submit" value="SUBMIT">
 						<input type="reset" value="RESET">
 					</article>
-				</form>';
+				</form>
+				<script>
+					$(function() {
+						var id = "";
+						$(\'#cname\').autocomplete({
+							source: "Project_Management/Time_Tracker/acfname.php"
+						});
+						$(\'#admin\').autocomplete({
+							source: "Project_Management/Time_Tracker/acname.php"
+						});
+						$(\'#pname\').autocomplete({
+							source: function(request, response) {
+								$.ajax({
+									url: "Project_Management/Time_Tracker/acpname.php",
+									dataType: "json",
+									data: {
+										term : request.term,
+										param : $("#cname").val()
+									},
+									success: function(data) {
+										response(data);
+									}
+								});
+							},
+							html: true
+						});
+					});
+				</script>';
 			break;
 		case 'view':
 			require "C:/xampp/htdocs/easyd/connect.php";

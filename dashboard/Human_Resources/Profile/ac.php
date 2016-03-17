@@ -1,9 +1,9 @@
 <?php
-	require "C:/xampp/htdocs/easyd/connect.php";
+  	require "C:/xampp/htdocs/easyd/connect.php";
 	$term = trim(strip_tags($_GET["term"]));
 	$a = array();
 	$b = array();
-	$sql = "SELECT name from interview WHERE name LIKE '%" . $term . "%'";
+	$sql = "SELECT name from employee_detail WHERE name LIKE '%" . $term . "%'";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {

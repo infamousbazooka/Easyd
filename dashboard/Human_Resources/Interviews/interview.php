@@ -19,15 +19,8 @@
 	$dob = $_POST["dob"];
 	$remark = $_POST["remarks"];
 
-	$servername = "localhost";
-	$uname = "root";
-	$pword = "";
-	$dbname = "easyd";
-
-	$conn = new mysqli($servername, $uname, $pword, $dbname);
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
+	
+	require "C:/xampp/htdocs/easyd/connect.php";
 
 	$sql = "INSERT into interview (name, email, address, contact, interviewed_by, post, interview_date, dob, remarks, status)
 	VALUES ('" . $name . "', '" . $email . "', '" . $address . "', '" . $contact . "', '" . $intby . "', '" . $post . "', '" . $inton . "', '" . $dob . "', '" . $remarks . "', '" . $status . "')";

@@ -97,9 +97,6 @@
 				<form action="Project_Management/Postproject/get.php" method="POST">
 					<input class="fill" type="text" id="firmname" required placeholder="FIRM NAME" name="firmname">
 					<input class="fill" type="text" id="projectname" required placeholder="PROJECT NAME" name="projectname">
-					<article>
-						<input type="button" value="GET STATUS">
-					</article>
 					<div class="box">
 						<h4>CHECKLIST</h4>
 						<label class="check">
@@ -125,9 +122,74 @@
 				</form>
 				<script>
 					$(function() {
-						$(\'#empname\').autocomplete({
-							source: "Project_Management/Postproject/autocompletename.php",
-							minLength: 2
+						$(\'#firmname\').autocomplete({
+							source: "Project_Management/Postproject/autocompletename.php"
+						});
+						var id = "";
+						$(\'#projectname\').autocomplete({
+							source: function(request, response) {
+								$.ajax({
+									url: "Project_Management/Postproject/acpname.php",
+									dataType: "json",
+									data: {
+										term : request.term,
+										param : $("#firmname").val()
+									},
+									success: function(data) {
+										response(data);
+										id = data[0];
+									}
+								});
+							},
+							html: true,
+							select: function(event,ui){
+								$.ajax({
+									url: "Project_Management/Postproject/view.php",
+									dataType: "json",
+									data: {
+										param : id,
+										val : $("#firmname").val()
+									},
+									success: function(data) {
+										console.log(JSON.stringify(data));
+										var first = data[0];
+										if (first.admin == "Yes") {
+											$("#admin").prop("checked", true);
+										}else{
+											$("#admin").prop("checked", false);
+										}
+										if (first.client == "Yes") {
+											$("#client").prop("checked", true);
+										}else{
+											$("#client").prop("checked", false);
+										}
+										if (first.hard == "Yes") {
+											$("#copies").prop("checked", true);
+										}else{
+											$("#copies").prop("checked", false);
+										}
+										if (first.invoice == "Yes") {
+											$("#invoice").prop("checked", true);
+										}else{
+											$("#invoice").prop("checked", false);
+										}
+										if (first.payment == "Yes") {
+											$("#pay").prop("checked", true);
+										}else{
+											$("#pay").prop("checked", false);
+										}
+									}
+								})
+								.done(function() {
+									console.log("success");
+								})
+								.fail(function() {
+									console.log("error");
+								})
+								.always(function() {
+									console.log("complete");
+								});
+							}
 						});
 					});
 				</script>

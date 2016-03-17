@@ -12,15 +12,7 @@
 	$meet_time = $_POST["time"];
 	$meet_minutes = $_POST["minutes"];
 
-	$servername = "localhost";
-	$uname = "root";
-	$pword = "";
-	$dbname = "easyd";
-
-	$conn = new mysqli($servername, $uname, $pword, $dbname);
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
+	require "C:/xampp/htdocs/easyd/connect.php";
 
 	$sql = "INSERT into meeting_details (project_name, members, meet_agenda, meet_date, meet_time, meet_minutes)
 	VALUES ('" . $project_name . "', '" . $members . "', '" . $meet_agenda . "', '" . $meet_date . "', '" . $meet_time . "', '" . $meet_minutes . "')";

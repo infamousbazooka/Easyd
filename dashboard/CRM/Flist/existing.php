@@ -11,16 +11,7 @@
 	$follow_reason = $_POST["follow_reason"];
 	$follow_reply = $_POST["follow_reply"];
 
-	$servername = "localhost";
-	$uname = "root";
-	$pword = "";
-	$dbname = "easyd";
-	$time = date('d-m-Y H:i:s');
-
-	$conn = new mysqli($servername, $uname, $pword, $dbname);
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
+	require "C:/xampp/htdocs/easyd/connect.php";
 
 	$sql = "UPDATE follow_list SET follow_reason='" . $follow_reason . "', follow_reply='" . $follow_reply . "' WHERE prospect_name='" . $prospect_name . "' AND firm_name='" . $firm_name . "'";
 	if ($conn->query($sql) === TRUE) {

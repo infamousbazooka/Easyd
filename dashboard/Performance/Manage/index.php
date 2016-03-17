@@ -41,7 +41,7 @@
 				<div id="display"></div>
 				<script>
 						$(function() {
-								var id = "";
+							var id = "";
 							$(\'#empname\').autocomplete({
 								source: function(request, response) {
 									$.ajax({
@@ -74,7 +74,47 @@
 						<input type="button" onclick="perfproj()" disabled="disabled" value="VIEW" id="viewindi">
 					</article>
 				</form>
-				<div id="display"></div>';
+				<div id="display"></div>
+				<script>
+					$(function() {
+						$(\'#empname\').autocomplete({
+							source: "Performance/Manage/emp.php"
+						});
+						$(\'#clientname\').autocomplete({
+							source: function(request, response) {
+								$.ajax({
+									url: "Performance/Manage/cname.php",
+									dataType: "json",
+									data: {
+										term : request.term,
+										empname : $("#empname").val()
+									},
+									success: function(data) {
+										response(data);
+									}
+								});
+							},
+							html: true
+						});
+						$(\'#projname\').autocomplete({
+							source: function(request, response) {
+								$.ajax({
+									url: "Performance/Manage/pname.php",
+									dataType: "json",
+									data: {
+										term : request.term,
+										empname : $("#empname").val(),
+										clientname : $("#clientname").val()
+									},
+									success: function(data) {
+										response(data);
+									}
+								});
+							},
+							html: true
+						});
+					});
+				</script>';
 			break;
 		default:
 			echo "nothin";

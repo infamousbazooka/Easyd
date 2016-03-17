@@ -26,7 +26,7 @@
 					</article>
 					<script>
 						$(function() {
-								var id = "";
+							var id = "";
 							$(\'#empid\').autocomplete({
 								source: function(request, response) {
 									$.ajax({

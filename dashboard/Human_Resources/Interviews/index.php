@@ -4,8 +4,8 @@
 			echo '<h1>INTERVIEW</h1>
 				<form action="Human_Resources/Interviews/update.php" method="POST">
 					<input type="text" name="name" id="intname" class="fill" required placeholder="INTERVIEWEE NAME">
-					<input type="text" name="decision" id="decision" class="fill" id="decision" required placeholder="DECISION">
-					<article>
+					<input type="text" name="decision" id="decision" class="fill" id="decision" readonly="readonly" required placeholder="DECISION">
+					<article id="status">
 						<h4>UPDATE</h4>
 						<select name="status">
 							<option value="Accepted">ACCEPT</option>
@@ -13,13 +13,54 @@
 						</select>
 					</article>
 					<article>
-						<input type="submit" value="SUBMIT">
+						<input type="submit" value="SUBMIT" id="sub">
 					</article>
 					<script>
 						$(function() {
+							var id = "";
 							$(\'#intname\').autocomplete({
-								source: "Human_Resources/Interviews/autocompletename.php",
-								minLength: 2
+								source: function(request, response) {
+									$.ajax({
+										url: "Human_Resources/Interviews/autocompletename.php",
+										dataType: "json",
+										data: {
+											term : request.term
+										},
+										success: function(data) {
+											response(data);
+											id = data[0];
+											console.log(id);
+										}
+									});
+								},
+								html: true,
+								select: function(event,ui){
+									$.ajax({
+										url: "Human_Resources/Interviews/getdec.php",
+										dataType: "json",
+										data: {param1: id},
+										success: function(data) {
+											var first = data[0];
+											$("#decision").val(first);
+											if (first == "Accepted") {
+												$("#status").hide();
+												$("#sub").hide();
+											} else{
+												$("#status").show();
+												$("#sub").hide();
+											}
+										}
+									})
+									.done(function() {
+										console.log("success");
+									})
+									.fail(function() {
+										console.log("error");
+									})
+									.always(function() {
+										console.log("complete");
+									});
+								}
 							});
 						});
 					</script>
@@ -64,7 +105,15 @@
 						<input type="submit" value="SUBMIT">
 						<input type="reset" value="CLEAR">
 					</article>
-				</form>';
+				</form>
+				<script>
+					$(function() {
+						$(\'#interby\').autocomplete({
+							source: "Human_Resources/Interviews/ac.php",
+							minLength: 2
+						});
+					});
+				</script>';
 			break;
 		default:
 			echo "nothin";

@@ -16,15 +16,8 @@
 	$admin_work_accom = $_POST["awacc"];
 	$ope = $_POST["ope"];
 
-	$servername = "localhost";
-	$uname = "root";
-	$pword = "";
-	$dbname = "easyd";
-
-	$conn = new mysqli($servername, $uname, $pword, $dbname);
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
+	
+	require "C:/xampp/htdocs/easyd/connect.php";
 	$today = date('Y-m-d H:i:s');
 
 	$sql = "INSERT into time_tracker (empname, date1, client_name, project_name, work_accomplished, num_hours, marketing, mark_work_accom, admin, admin_work_accom, ope, submit_time)

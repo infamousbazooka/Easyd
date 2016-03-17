@@ -66,7 +66,7 @@
 				<script>
 					$(function() {
 						$(\'#empname\').autocomplete({
-							source: "Human_Resources/Attendance/autocompletename.php",
+							source: "Human_Resources/Incentives/autocompletename.php",
 							minLength: 2
 						});
 					});
@@ -143,7 +143,14 @@
 					</article>
 				</form>
 				<div id="display"></div>
-			</div>');
+			</div>
+				<script>
+					$(function() {
+						$(\'#empname\').autocomplete({
+							source: "Human_Resources/Profile/ac.php"
+						});
+					});
+				</script>');
 			break;
 		case 'staff':
 			echo '<div class="form">

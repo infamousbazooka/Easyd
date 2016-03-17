@@ -12,16 +12,8 @@
 	$follow_reply = $_POST["follow_reply"];
 	$leadtype = $_POST["leadtype"];
 
-	$servername = "localhost";
-	$uname = "root";
-	$pword = "";
-	$dbname = "easyd";
-	$time = date('d-m-Y H:i:s');
-
-	$conn = new mysqli($servername, $uname, $pword, $dbname);
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
+	
+	require "C:/xampp/htdocs/easyd/connect.php";
 
 	if ($leadtype == 'new') {
 		$sql = "INSERT into follow_list (prospect_name, firm_name, proj_associated, follow_reason, entered_by, entry_time, follow_reply)

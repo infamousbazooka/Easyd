@@ -9,16 +9,7 @@
 	$password = $_POST["pass"];
 	$rpass = $_POST["rpass"];
 	$empid = $_POST["empid"];
-
-	$servername = "localhost";
-	$uname = "root";
-	$pword = "";
-	$dbname = "easyd";
-
-	$conn = new mysqli($servername, $uname, $pword, $dbname);
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
+	require "C:/xampp/htdocs/easyd/connect.php";
 	date_default_timezone_set('Asia/Calcutta');
 	$today = date('Y-m-d H:i:s');
 

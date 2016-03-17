@@ -37,7 +37,7 @@
 				<form action="CRM/Flist/existing.php" method="POST">
 					<section>
 						<input class="fill" type="text" id="fname" required placeholder="FIRM NAME" name="firm_name">
-						<input class="fill" type="text" id="pname" required placeholder="PROSPECT NAME" name="prospect_name">
+						<input class="fill" type="text" id="prname" required placeholder="PROSPECT NAME" name="prospect_name">
 					</section>
 					<input class="fill" type="text" id="pname" required placeholder="PROJECT NAME" name="proj_associated">
 					<div class="box">
@@ -51,10 +51,51 @@
 					<div class="box">
 						<h3>HISTORY</h3>
 						<article>
-							<input type="button" value="VIEW">
+							<input type="button" onclick="viewflist()" value="VIEW">
 						</article>
 					</div>
-				</form>';
+				</form>
+				<div id="display"></div>
+				<script>
+					$(function() {
+						$(\'#fname\').autocomplete({
+							source: "CRM/Flist/acname.php"
+						});
+						$(\'#prname\').autocomplete({
+							source: function(request, response) {
+								$.ajax({
+									url: "CRM/Flist/acpr.php",
+									dataType: "json",
+									data: {
+										term : request.term,
+										fname : $("#fname").val()
+									},
+									success: function(data) {
+										response(data);
+									}
+								});
+							},
+							html: true
+						});
+						$(\'#pname\').autocomplete({
+							source: function(request, response) {
+								$.ajax({
+									url: "CRM/Flist/acp.php",
+									dataType: "json",
+									data: {
+										term : request.term,
+										fname : $("#fname").val(),
+										prname : $("#prname").val()
+									},
+									success: function(data) {
+										response(data);
+									}
+								});
+							},
+							html: true
+						});
+					});
+				</script>';
 			break;
 		default:
 			echo "nothin";

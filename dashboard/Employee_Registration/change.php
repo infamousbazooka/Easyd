@@ -9,15 +9,7 @@ $name = $_POST["name"];
 $cpass = $_POST["cpass"];
 $pass = $_POST["pass"];
 
-$servername = "localhost";
-$uname = "root";
-$pword = "";
-$dbname = "easyd";
-
-$conn = new mysqli($servername, $uname, $pword, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+	require "C:/xampp/htdocs/easyd/connect.php";
 
 $sql = "UPDATE registration_sftwre SET password='" . $pass . "' WHERE name='" . $name . "' AND password='" . $cpass . "'";
 

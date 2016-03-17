@@ -12,9 +12,23 @@
 					<article>
 						<input type="submit" value="SUBMIT">
 						<input type="reset" value="RESET">
-						<input type="button" value="UPDATE">
+						<input type="button" id="update" value="UPDATE">
 					</article>
-				</form>';
+				</form>
+				<script>
+					$(function() {
+						$(\'#pname\').autocomplete({
+							source: "Project_Management/Meetings/acpname.php"
+						});
+					});
+					function updatemeet() {
+						file = "http://localhost/easyd/dashboard/Project_Management/Meetings/update.php";
+						pname = $("#pname").val();
+						date = $("#to").val();
+						$("#xot").load(file, {"pname":pname, "to": to});
+					}
+				</script>
+				<h4 id="xot"></h4>';
 			break;
 		case 'view':
 				require "C:/xampp/htdocs/easyd/connect.php";

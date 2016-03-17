@@ -13,14 +13,8 @@
 	$pstartdate = $_POST["start"];
 	$penddate = $_POST["end"];
 
-	$servername = "localhost";
-	$uname = "root";
-	$pword = "";
-	$dbname = "easyd";
-	$conn = new mysqli($servername, $uname, $pword, $dbname);
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
+	
+	require "C:/xampp/htdocs/easyd/connect.php";
 	$sql = "INSERT into project (pname, client_name, leader, team_members, pdescription, pstartdate, penddate)
 	VALUES ('" . $pname . "', '" . $client_name . "', '" . $leader . "', '" . $team_members . "', '" . $pdescription . "', '" . $pstartdate . "', '" . $penddate . "')";
 

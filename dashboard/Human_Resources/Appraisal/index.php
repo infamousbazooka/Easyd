@@ -21,7 +21,33 @@
 						<input type="submit" value="SUBMIT">
 						<input type="reset" value="CLEAR">
 					</article>
-				</form>';
+				</form>
+				<script>
+					$(function() {
+						$(\'#fname\').autocomplete({
+							source: "Human_Resources/Appraisal/autocompletename.php"
+						});
+						$(\'#empname\').autocomplete({
+							source: "Human_Resources/Appraisal/ac.php"
+						});
+						$(\'#pname\').autocomplete({
+							source: function(request, response) {
+								$.ajax({
+									url: "Human_Resources/Appraisal/autocompletepname.php",
+									dataType: "json",
+									data: {
+										term : request.term,
+										fname : $("#fname").val()
+									},
+									success: function(data) {
+										response(data);
+									}
+								});
+							},
+							html: true
+						});
+					});
+				</script>';
 			break;
 		case 'view':
 			require "C:/xampp/htdocs/easyd/connect.php";

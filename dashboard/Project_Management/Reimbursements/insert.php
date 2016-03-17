@@ -17,15 +17,8 @@
 	$invoice_no = $_POST["invoice"];
 	$details = $_POST["details"];
 
-	$servername = "localhost";
-	$uname = "root";
-	$pword = "";
-	$dbname = "easyd";
-
-	$conn = new mysqli($servername, $uname, $pword, $dbname);
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
+	
+	require "C:/xampp/htdocs/easyd/connect.php";
 	$today = date('Y-m-d H:i:s');
 
 	$sql = "INSERT into reimburse_expenses (empname, date_from, date_to, expense_type, expense_nature, mode, days, distance, price, amount, invoice_no, details)

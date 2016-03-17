@@ -20,7 +20,17 @@
 						<input type="submit" value="SUBMIT">
 						<input type="reset" value="RESET">
 					</article>
-				</form>';
+				</form>
+				<script>
+					$(function() {
+						$(\'#firmname\').autocomplete({
+							source: "Project_Management/On_Project/acfname.php"
+						});
+						$(\'#leader\').autocomplete({
+							source: "Project_Management/On_Project/acname.php"
+						});
+					});
+				</script>';
 			break;
 		case 'clientdetails':
 			echo '<h1>CLIENT DETAILS</h1>
@@ -33,7 +43,14 @@
 						<input type="submit" value="SUBMIT">
 						<input type="reset" value="RESET">
 					</article>
-				</form>';
+				</form>
+				<script>
+					$(function() {
+						$(\'#name\').autocomplete({
+							source: "Project_Management/On_Project/acfname.php"
+						});
+					});
+				</script>';
 			break;
 		case 'tasks':
 			echo '<h1>TASKS</h1>
@@ -46,10 +63,10 @@
 			break;
 		case 'viewproject':
 			echo '<h1>VIEW PROJECTS</h1>
-				<form action="Project_Management/On_Project/initiate.php" method="POST">
+				<form>
 					<article>
-						<input type="button" value="PROJECT SUMMARY" id="summary">
-						<input type="button" value="PROJECT DETAILS" id="details">
+						<input type="button" onclick="viewsummary()" value="PROJECT SUMMARY" id="summary">
+						<input type="button" onclick="kfndkndkfn()" value="PROJECT DETAILS" id="details">
 					</article>
 					<input class="fill" type="text" id="firmname" required placeholder="FIRM NAME" name="firmname">
 					<input class="fill" type="text" id="projectname" required placeholder="PROJECT NAME" name="projectname">
@@ -57,10 +74,124 @@
 					<input class="fill" type="text" id="description" required placeholder="PROJECT DESCRIPTION" name="description">
 					<input class="fill" type="text" id="pstart" required placeholder="START" name="pstart">
 					<input class="fill" type="text" id="pend" required placeholder="END" name="pend">
-				</form>';
+				</form>
+				<div id="display"></div>
+				<script>
+					function viewsummary() {
+						file = "http://localhost/easyd/dashboard/Project_Management/On_Project/summ.php";
+						$("#display").load(file);
+					}
+					function kfndkndkfn() {
+						file = "http://localhost/easyd/dashboard/Project_Management/On_Project/detail.php";
+						fname = $("#firmname").val();
+						pname = $("#projectname").val();
+						$("#display").load(file, {
+							"fname" : fname, 
+							"pname" : pname
+						});
+					}
+					$(function() {
+						$(\'#firmname\').autocomplete({
+							source: function(request, response) {
+								$.ajax({
+									url: "Project_Management/On_Project/acfname.php",
+									dataType: "json",
+									data: {
+										term : request.term
+									},
+									success: function(data) {
+										response(data);
+									}
+								});
+							},
+							html: true
+						});
+						var id = "";
+						$(\'#projectname\').autocomplete({
+							source: function(request, response) {
+								$.ajax({
+									url: "Project_Management/On_Project/acpname.php",
+									dataType: "json",
+									data: {
+										term : request.term,
+										param : $("#firmname").val()
+									},
+									success: function(data) {
+										response(data);
+										id = data[0];
+									}
+								});
+							},
+							html: true,
+							select: function(event,ui){
+								$.ajax({
+									url: "Project_Management/On_Project/get.php",
+									dataType: "json",
+									data: {
+										param : id,
+										val : $("#firmname").val()
+									},
+									success: function(data) {
+										console.log(JSON.stringify(data));
+										var first = data[0];
+										$("#teamleader").val(first.leader);
+										$("#description").val(first.pdescription);
+										$("#pstart").val(first.pstartdate);
+										$("#pend").val(first.penddate);
+									}
+								})
+								.done(function() {
+									console.log("success");
+								})
+								.fail(function() {
+									console.log("error");
+								})
+								.always(function() {
+									console.log("complete");
+								});
+							}
+						});
+					});
+				</script>';
 			break;
 		case 'addmembers':
-			echo '';
+			echo '<h1>ADD MEMBERS</h1>
+				<form action="Project_Management/On_Project/mem.php" method="POST">
+					<input class="fill" type="text" id="fname" required placeholder="FIRM NAME" name="fname">
+					<input class="fill" type="text" id="pname" required placeholder="PROJECT NAME" name="pname">
+					<input class="fill" type="tel" id="member" required placeholder="MEMBERS" name="member">
+					<article>
+						<input type="submit" value="SUBMIT">
+						<input type="reset" value="RESET">
+					</article>
+				</form>
+				<script>
+					$(function() {
+						$(\'#fname\').autocomplete({
+							source: "Project_Management/On_Project/acfname.php"
+						});
+						$(\'#member\').autocomplete({
+							source: "Project_Management/On_Project/acname.php"
+						});
+						$(\'#pname\').autocomplete({
+							source: function(request, response) {
+								$.ajax({
+									url: "Project_Management/On_Project/acpname.php",
+									dataType: "json",
+									data: {
+										term : request.term,
+										param : $("#fname").val()
+
+									},
+									success: function(data) {
+										response(data);
+									}
+								});
+							},
+							html: true
+						});
+					});
+				</script>';
 			break;
 		default:
 			echo "nothin";

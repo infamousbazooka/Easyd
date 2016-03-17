@@ -2,8 +2,7 @@
 	session_start();
 	$username = $_SESSION["username"];
 	$name = $_SESSION["name"];
-
-	if (!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
+	if (!isset($_SESSION["username"]) || !isset($_SESSION["password"])) {
 		header('Location: ../../');
 	}
 	require "C:/xampp/htdocs/easyd/connect.php";
@@ -27,15 +26,20 @@
 			$flag = 1;
 			$sql = "INSERT into attd_register (empid, empname, intime, inhr, date1, inmin, outtime)
 			VALUES ('" . $username . "', '" . $name . "', '" . $now . "', '" . $hour . "', '" . $today . "', '" . $min . "', '0')";
+			$sqle = "INSERT into attd_summary (empname, date1, intimehr, intimemin, intime)
+			VALUES ('" . $name . "', '" . $today . "', '" . date('H') . "', '" . date('i') . "', '" . date('H:i') . "')";
 		}else{
 			$flag = 0;
 			$sql = "UPDATE attd_register SET outtime='" . $now . "', outhr='" . $hour . "', outmin='" . $min . "' WHERE pid='" . $id . "'";
+			$sqle = "UPDATE attd_summary SET outtimehr='" . date('H') . "', outtimemin='" . date('i') . "', outtime='" . date('H:i') . "' WHERE empname='" . $name . "'";
 		}
 	} else{
 		if ($today != $check) {
 			$flag = 1;
 			$sql = "INSERT into attd_register (empid, empname, intime, inhr, date1, inmin, outtime)
 			VALUES ('" . $username . "', '" . $name . "', '" . $now . "', '" . $hour . "', '" . $today . "', '" . $min . "', '0')";
+			$sqle = "INSERT into attd_summary (empname, date1, intimehr, intimemin, intime)
+			VALUES ('" . $name . "', '" . $today . "', '" . date('H') . "', '" . date('i') . "', '" . date('H:i') . "')";
 		}else{
 			die("<h1>YOUR ATTENDANCE WAS RECORDED</h1>");
 		}
