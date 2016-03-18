@@ -16,6 +16,7 @@ $(document).ready(function() {
 $(window).resize(function() {
 
 });
+
 function checkviewindi () {
 	if ($('#empname').val() == "") {
 		$('#viewindi').attr('disabled', 'disabled');
@@ -108,12 +109,6 @@ function radioCheck () {
 		}
 		if($(this).attr("value")=="general"){
 			$("#sectortype").hide();
-		}
-		if($(this).attr("value")=="item"){
-			$("#stocke").show();
-		}
-		if($(this).attr("value")=="gen"){
-			$("#stocke").hide();
 		}
 		if($(this).attr("value")=="individual"){
 			$("#empname").show();

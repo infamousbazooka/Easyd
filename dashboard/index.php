@@ -80,8 +80,6 @@
 				<li><a href="#"><h4 onclick="getType('perf', 'view')"class="h4"><i class="fa fa-asterisk"></i>PERFORMANCE</h4></a></li>
 				<li><a href="#"><h4 class="h4"><i class="fa fa-asterisk"></i>DOCUMENT MANAGER
 					<ul class="inner-ul">
-						<li><a href="#"><h4>UPLOAD FILE</h4></a></li>
-						<li><a href="#"><h4>OPEN FILE</h4></a></li>
 						<li><a href="#"><h4>PROJECT REPORTS</h4></a></li>
 					</ul>
 				</h4></a></li>

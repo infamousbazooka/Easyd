@@ -5,19 +5,18 @@
 		header('Location: ../../');
 	}
 
-	$name = $_POST["name"];
-	$password = $_POST["pass"];
-	$rpass = $_POST["rpass"];
-	$empid = $_POST["empid"];
+	$fname = $_REQUEST["fname"];
+	$empid = $_REQUEST["pass"];
+	$pass = $_REQUEST["pass"];
 	require "C:/xampp/htdocs/easyd/connect.php";
 	date_default_timezone_set('Asia/Calcutta');
 	$today = date('Y-m-d H:i:s');
 
 	$sql = "INSERT into registration_sftwre (name, password, empid, time1)
-	VALUES ('" . $name . "', '" . $password . "', '" . $empid . "', '" . $today . "')";
+	VALUES ('" . $fname . "', '" . $pass . "', '" . $empid . "', '" . $today . "')";
 
 	if ($conn->query($sql) === TRUE) {
-		header('Location: ../../');
+		echo "REGISTRATION SUCCESSFUL";
 	} else {
 	    echo "Error: " . $sql . "<br>" . $conn->error;
 	}

@@ -5,18 +5,18 @@ if (!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
 }
 
 
-$name = $_POST["name"];
+$empid = $_POST["empid"];
 $cpass = $_POST["cpass"];
 $pass = $_POST["pass"];
 
-	require "C:/xampp/htdocs/easyd/connect.php";
+require "C:/xampp/htdocs/easyd/connect.php";
 
-$sql = "UPDATE registration_sftwre SET password='" . $pass . "' WHERE name='" . $name . "' AND password='" . $cpass . "'";
+$sql = "UPDATE registration_sftwre SET password='" . $pass . "' WHERE empid='" . $empid . "' AND password='" . $cpass . "'";
 
 if ($conn->query($sql) === TRUE) {
-	header('Location: ../../');
+	echo "PASSWORD CHANGED";
 } else {
-    echo "Error updating record: " . $conn->error;
+    echo "PLEASE CHECK YOUR CURRENT PASSWORD";
 }
 
 $conn->close();

@@ -6,10 +6,10 @@ if (!isset($_SESSION["username"]) && !isset($_SESSION["password"])) {
 }
 require "C:/xampp/htdocs/easyd/connect.php";
 
-$item = $_POST["name"];
-$category = $_POST["category"];
-$quantity = $_POST["currentqty"];
-$cquantity = $_POST["cqty"];
+$item = $_REQUEST["item"];
+$category = $_REQUEST["category"];
+$quantity = $_REQUEST["qty"];
+$cquantity = $_REQUEST["cqty"];
 
 $sql = "SELECT * FROM stock_details WHERE category='" . $category . "' AND item='" . $item . "'";
 $result = $conn->query($sql);
@@ -34,12 +34,13 @@ if ($new < 0) {
 date_default_timezone_set('Asia/Calcutta');
 $today = $date = date('Y-m-d H:i:s');
 $sql = "INSERT into stock_consumed (item, quantity, time1, category, buffer)
-VALUES ('" . $item . "', '" . $quantity . "', '" . $today . "', '" . $category . "', '" . $buffer . "')";
+VALUES ('" . $item . "', '" . $new . "', '" . $today . "', '" . $category . "', '" . $buffer . "')";
 $result = $conn->query($sql);
 $quantity = $quantity - $cquantity;
 $sql = "UPDATE stock_details SET quantity='" . $quantity . "' WHERE item='" . $item . "' AND category='" . $category . "'";
 
 if ($conn->query($sql) === TRUE) {
+	echo $item . " WAS UPDATED";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

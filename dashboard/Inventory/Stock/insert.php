@@ -7,22 +7,23 @@
 		header('Location: ../../');
 	}
 
-	$item = $_POST["name"];
-	$description = $_POST["desc"];
-	$category = $_POST["category"];
-	$quantity = $_POST["qty"];
-	$price = $_POST["price"];
-	$purchase_date = $_POST["pur"];
-	$buffer = $_POST["buffer"];
+	$item = $_REQUEST["name"];
+	$description = $_REQUEST["desc"];
+	$category = $_REQUEST["category"];
+	$quantity = $_REQUEST["qty"];
+	$price = $_REQUEST["price"];
+	$purchase_date = $_REQUEST["to"];
+	$buffer = $_REQUEST["buffer"];
 
 	require "C:/xampp/htdocs/easyd/connect.php";
 	date_default_timezone_set('Asia/Calcutta');
 	$today = $date = date('Y-m-d H:i:s');
 
-	$sql = "INSERT into stock_details (item, description, category, quantity, price, purchase_date, buffer)VALUES ('" . $item . "', '" . $description . "', '" . $category . "', '" . $quantity . "', '" . $price . "', '" . $purchase_date . "', '" . $buffer . "')";
+	$sql = "INSERT into stock_details (item, description, category, quantity, price, purchase_date, buffer)
+	VALUES ('" . $item . "', '" . $description . "', '" . $category . "', '" . $quantity . "', '" . $price . "', '" . $purchase_date . "', '" . $buffer . "')";
 
 	if ($conn->query($sql) === TRUE) {
-	    header('Location: ../../');;
+		echo "SAVED SUCCESSFULLY";
 	} else {
 	    echo "Error: " . $sql . "<br>" . $conn->error;
 	}
