@@ -102,7 +102,16 @@
 						<input type="button" value="ALLOCATE TASKS" id="allocatetasks">
 						<input type="button" value="VIEW TASKS" id="viewtasks">
 					</article>
-				</form>';
+				</form>
+				<div id="display"></div>
+				<script>
+					$("#allocatetasks").click(function(){
+						$("#display").load("Project_Management/On_Project/Tasks/allocate.php");
+					});
+					$("#viewtasks").click(function(){
+						$("#display").load("Project_Management/On_Project/Tasks/view.php");
+					});
+				</script>';
 			break;
 		case 'viewproject':
 			echo '<h1>VIEW PROJECTS</h1>

@@ -80,7 +80,7 @@ table{
 }
 .menu .information{
 	margin: 2px;
-	width: 100%;
+	width: calc(84% - 4px);
 	padding: 8%;
 }
 .menu .information h4{

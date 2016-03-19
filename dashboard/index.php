@@ -115,7 +115,7 @@
 		<section class="body" id="body">
 		</section>
 		<section class="footer">
-			<p>Footer text here.</p>
+			<p>MANGAL ADVISORY SERVICES</p>
 		</section>
 	</div>
 </body>
