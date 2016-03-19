@@ -28,7 +28,19 @@
 						<input type="button" onclick="viewclient()" value="VIEW">
 					</article>
 				</form>
-				<div id="display"></div>';
+				<div id="display"></div>
+				<script>
+					$(function() {
+						$(\'input[type="radio"]\').click(function() {
+							if($(this).attr("value")=="sector"){
+								$("#sectortype").show();
+							}
+							if($(this).attr("value")=="general"){
+								$("#sectortype").hide();
+							}
+						});
+					});
+				</script>';
 			break;
 		
 		case 'newclient':
@@ -40,7 +52,7 @@
 					</section>
 					<section>
 						<input class="fill" type="email" id="email" required placeholder="EMAIL" name="email">
-						<textarea class="fill" id="address" required placeholder="ADDRESS" name="address"></textarea>
+						<input class="fill" type="text" id="address" required placeholder="ADDRESS" name="address">
 					</section>
 					<section>
 						<input class="fill" type="tel" id="phone" required placeholder="PHONE NUMBER" name="contact">

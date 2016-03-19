@@ -17,7 +17,7 @@
 	$diff = $date1->diff($date2);
 	$days = $diff->format('%a');
 	date_default_timezone_set('Asia/Calcutta');
-	$today = $date = date('Y-m-d H:i:s');
+	$today = date('Y-m-d H:i:s');
 
 	$sql = "INSERT into leave_applications (empid, empname, from1, to1, application_date, approval_status, reason, num_days)VALUES ('" . $username . "', '" . $name . "', '" . $from . "', '" . $to . "', '" . $today . "', 'pending', '" . $reason . "', '" . $days . "')";
 

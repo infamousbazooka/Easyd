@@ -104,12 +104,6 @@ function checkPasswordMatch() {
 }
 function radioCheck () {
 	$('input[type="radio"]').click(function(){
-		if($(this).attr("value")=="sector"){
-			$("#sectortype").show();
-		}
-		if($(this).attr("value")=="general"){
-			$("#sectortype").hide();
-		}
 		if($(this).attr("value")=="individual"){
 			$("#empname").show();
 		}
@@ -199,6 +193,9 @@ function getType(type, sub){
 			break;
 		case 'project':
 			file = 'Project_Management/';
+			break;
+		case 'document':
+			file = 'Document_Manager/';
 			break;
 		case 'inventory':
 			file = 'Inventory/';

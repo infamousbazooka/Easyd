@@ -95,7 +95,12 @@
 				<li><a href="#"><h4 onclick="getType('perf', 'view')"class="h4"><i class="fa fa-asterisk"></i>PERFORMANCE</h4></a></li>
 				<li><a href="#"><h4 class="h4"><i class="fa fa-asterisk"></i>DOCUMENT MANAGER
 					<ul class="inner-ul">
-						<li><a href="#"><h4>PROJECT REPORTS</h4></a></li>
+						<li><h4 id="reports">PROJECT REPORTS</h4></li>
+						<script>
+							$('#reports').click(function(event) {
+								getType('document', 'report');
+							});
+						</script>
 					</ul>
 				</h4></a></li>
 				<li><a href="#"><h4 class="h4"><i class="fa fa-asterisk"></i>INVENTORY

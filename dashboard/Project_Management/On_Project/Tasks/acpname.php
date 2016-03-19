@@ -4,7 +4,7 @@
 	$param = $_GET["param"];
 	$a = array();
 	$b = array();
-	$sql = "SELECT DISTINCT pname from project WHERE pname LIKE '%" . $term . "%' AND client_name='" . $param . "'";
+	$sql = "SELECT DISTINCT pname from project WHERE pname LIKE '" . $term . "%' AND client_name='" . $param . "'";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {

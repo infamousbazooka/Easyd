@@ -2,7 +2,6 @@
 	require "C:/xampp/htdocs/easyd/connect.php";
 	if (isset($_REQUEST["sector"])) {
 		$sector = $_REQUEST["sector"];
-		echo $sector;
 		$sql = "SELECT * FROM clients WHERE sector='" . $sector . "'";
 	} else{
 		$sql = "SELECT * FROM clients";

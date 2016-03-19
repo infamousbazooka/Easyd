@@ -3,7 +3,7 @@
 	$term = trim(strip_tags($_GET["term"]));
 	$a = array();
 	$b = array();
-	$sql = "SELECT DISTINCT firm_name from clients WHERE firm_name LIKE '" . $term . "%'";
+	$sql = "SELECT DISTINCT firm_name from clients WHERE firm_name LIKE '%" . $term . "%'";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {

@@ -1,13 +1,14 @@
 <?php
   	require "C:/xampp/htdocs/easyd/connect.php";
-	$term = trim(strip_tags($_GET["term"]));
+	$cname = $_GET["param"];
+	$pname = $_GET["val"];
 	$a = array();
 	$b = array();
-	$sql = "SELECT DISTINCT firm_name from clients WHERE firm_name LIKE '" . $term . "%'";
+	$sql = "SELECT DISTINCT task from proj_tasks WHERE pro_name='" . $pname . "' AND firmname='" . $cname . "' LIMIT 1";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
-			array_push($a, $row["firm_name"]);
+			array_push($a, $row["task"]);
 		}
 	}
 	echo json_encode($a);
