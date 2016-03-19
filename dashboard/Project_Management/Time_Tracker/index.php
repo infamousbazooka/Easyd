@@ -57,8 +57,16 @@
 				</script>';
 			break;
 		case 'view':
+			session_start();
+			$chk = $_SESSION["username"];
+			$name = $_SESSION["name"];
+			$chk = preg_replace('/[0-9]+/', '', $chk);
 			require "C:/xampp/htdocs/easyd/connect.php";
-			$sql = "SELECT * FROM time_tracker";
+			if ($chk == "ow") {
+				$sql = "SELECT * FROM time_tracker";
+			} else{
+				$sql = "SELECT * FROM time_tracker WHERE empname='" . $name . "'";
+			}
 			$result = $conn->query($sql);
 			if ($result->num_rows > 0) {
 				echo '<table class="pure-table pure-table-bordered">

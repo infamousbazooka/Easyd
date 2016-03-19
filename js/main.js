@@ -117,17 +117,6 @@ function radioCheck () {
 			$("#empname").val("");
 			$("#empname").hide();
 		}
-		if($(this).attr("value")=="indiv"){
-			$(".box").show();
-			if ($('#empname').val() == "") {
-				$('#viewindi').attr('disabled', 'disabled');
-			}
-		}
-		if($(this).attr("value")=="comp"){
-			$('#empname').val("");
-			$('#viewindi').removeAttr('disabled');
-			$(".box").hide();
-		}
 	});
 }
 
@@ -347,19 +336,6 @@ function add () {
 	var newq = $('#nleaves').val();
 	var total = Number(quota) + Number(newq);
 	$('#tleaves').val(total);
-}
-function perfatten() {
-	file = "http://localhost/easyd/dashboard/Performance/Manage/get.php";
-	name = $('#empname').val();
-	month = $('#month').val();
-	year = $('#year').val();
-	if (name == "") {
-		console.log('runn');
-		$('#display').load(file, {"month":month, "year":year});
-	}
-	else {
-		$('#display').load(file, {"name":name, "month":month, "year":year});
-	} 
 }
 
 function perfproj() {

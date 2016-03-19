@@ -5,20 +5,19 @@
 		header('Location: ../../');
 	}
 
-	$project_name = $_POST["pname"];
-	$members = $_POST["memreq"];
-	$meet_agenda = $_POST["agenda"];
-	$meet_date = $_POST["mdate"];
-	$meet_time = $_POST["time"];
-	$meet_minutes = $_POST["minutes"];
+	$project_name = $_REQUEST["pname"];
+	$members = $_REQUEST["memreq"];
+	$meet_agenda = $_REQUEST["agenda"];
+	$meet_date = $_REQUEST["mdate"];
+	$meet_time = $_REQUEST["time"];
 
 	require "C:/xampp/htdocs/easyd/connect.php";
 
-	$sql = "INSERT into meeting_details (project_name, members, meet_agenda, meet_date, meet_time, meet_minutes)
-	VALUES ('" . $project_name . "', '" . $members . "', '" . $meet_agenda . "', '" . $meet_date . "', '" . $meet_time . "', '" . $meet_minutes . "')";
+	$sql = "INSERT into meeting_details (project_name, members, meet_agenda, meet_date, meet_time)
+	VALUES ('" . $project_name . "', '" . $members . "', '" . $meet_agenda . "', '" . $meet_date . "', '" . $meet_time . "')";
 
 	if ($conn->query($sql) === TRUE) {
-	    header('Location: ../../');
+		echo "MEETING SAVED";
 	} else {
 	    echo "Error: " . $sql . "<br>" . $conn->error;
 	}

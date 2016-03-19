@@ -30,13 +30,28 @@
 	<div class="mainwrapper">
 		<section class="menu">
 			<div class="info">
-				<article class="dp">
-					<img src="../images/profile.png" class="img-responsive" alt="Profile picture">
-				</article>
 				<article class="information">
 					<?php
 						echo "<h4>" . $username . "</h4><h4>" . $name . "</h4>";
 					?>
+					<a href="logout.php"><h4 id="logout">LOGOUT</h4></a>
+					<script>
+						$('#logout').click(function(event) {
+							$.ajax({
+								url: 'logout.php'
+							})
+							.done(function() {
+								console.log("success");
+							})
+							.fail(function() {
+								console.log("error");
+							})
+							.always(function() {
+								console.log("complete");
+							});
+							
+						});
+					</script>
 				</article>
 			</div>
 			<ul>

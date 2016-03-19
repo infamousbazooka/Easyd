@@ -25,7 +25,7 @@
 	VALUES ('" . $username . "', '" . $periodfrom . "', '" . $periodto . "', '" . $expense_type . "', '" . $expense_nature . "', '" . $mode . "', '" . $days . "', '" . $distance . "', '" . $price . "', '" . $amount . "', '" . $invoice_no . "', '" . $details . "')";
 
 	if ($conn->query($sql) === TRUE) {
-	    header('Location: ../../');
+	    echo "DATA WAS SAVED SUCCESSFULLY";
 	} else {
 	    echo "Error: " . $sql . "<br>" . $conn->error;
 	}

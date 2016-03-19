@@ -11,23 +11,66 @@
 						<input class="fill" type="text" id="leader" required placeholder="TEAM LEADER" name="leader">
 						<input class="fill" type="text" id="members" required placeholder="MEMBERS" name="members">
 					</article>
-					<textarea class="fill" name="description" required placeholder="PROJECT DESCRIPTION"></textarea>
+					<h4 id="mem"></h4>
+					<textarea class="fill" id="desc" name="description" required placeholder="PROJECT DESCRIPTION"></textarea>
 					<article>
 						<input class="fill" type="text" id="start" required placeholder="START DATE" name="start">
 						<input class="fill" type="text" id="end" required placeholder="END DATE" name="end">
 					</article>
 					<article>
-						<input type="submit" value="SUBMIT">
-						<input type="reset" value="RESET">
+						<input type="button" id="ret" value="SUBMIT">
+						<input type="reset" id="reset" value="RESET">
 					</article>
 				</form>
+				<h4 id="display"></h4>
 				<script>
 					$(function() {
+						$("#reset").click(function(event) {
+							$("#mem").text("");
+						});
 						$(\'#firmname\').autocomplete({
 							source: "Project_Management/On_Project/acfname.php"
 						});
 						$(\'#leader\').autocomplete({
 							source: "Project_Management/On_Project/acname.php"
+						});
+						$("#ret").click(function(event) {
+							file = "Project_Management/On_Project/initiate.php";
+							firmname = $("#firmname").val();
+							projectname = $("#projectname").val();
+							leader = $("#leader").val();
+							members = $("#mem").text();
+							members = str_replace("SELECTED MEMBERS: ", "", members);
+							desc = $("#desc").val();
+							start = $("#start").val();
+							end = $("#end").val();
+							$("#display").load(file, {"firmname":firmname, "projectname":projectname, "leader":leader, "members":members, "description":desc, "start":start, "end":end});
+						});
+						$(\'#members\').autocomplete({
+							source: function(request, response) {
+								$.ajax({
+									url: "Project_Management/Meetings/acmem.php",
+									dataType: "json",
+									data: {
+										term : request.term
+									},
+									success: function(data) {
+										response(data);
+									}
+								});
+							},
+							html: true,
+							select: function(event,ui){
+								val = $("#mem").text();
+								if (val != "") {
+									$("#mem").text(val + ", " + ui.item.value);
+									$("#members").val("");
+								}
+								else{
+									$("#mem").text("SELECTED MEMBERS: " + ui.item.value);
+									$("#members").val("");
+								}
+							}
 						});
 					});
 				</script>';

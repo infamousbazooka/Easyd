@@ -33,6 +33,9 @@ body{
 table a{
 	color: #f25050;
 }
+#logout:hover{
+	color: #222d2f;
+}
 .file h4{
 	width: 40% !important;
 }
@@ -75,17 +78,10 @@ table{
 	vertical-align: middle;
 	display: inline-block;
 }
-.menu .dp{
-	width: 100px;
-	margin: 10px;
-}
-.menu .dp img{
-	display: block;
-	border-radius: 50%;
-}
 .menu .information{
 	margin: 2px;
-	width: calc(100% - 130px);
+	width: 100%;
+	padding: 8%;
 }
 .menu .information h4{
 	text-align: left;
@@ -94,7 +90,7 @@ table{
 .menu li .h4{
 	padding: 8%;
 	text-align: left;
-	border-bottom: 3px solid #f25050;
+	border-bottom: 3px solid #2cc36b;
 	background-color: #222d2f;
 }
 .menu li .h4:hover{
@@ -127,30 +123,30 @@ table{
 }
 .body .title h1{
 	padding: 10px;
-	border-bottom: 2px solid #f25050;
+	border-bottom: 2px solid #2cc36b;
 }
 .body .links{
 	display: block;
-	border-bottom: 2px solid #f25050;
+	border-bottom: 2px solid #2cc36b;
 }
 .body .links h4{
 	background-color: #222d2f;
 	display: inline-block;
 	padding: 10px;
-	border: 2px solid #f25050;
+	border: 2px solid #2cc36b;
 	margin: 2% 5px;
 	color: #fafafa;
 	cursor: pointer;
 }
 .body .links h4:hover{
 	border-color: #222d2f;
-	background-color: #f25050;
+	background-color: #2cc36b;
 }
 
 .body .form h1{
 	display: inline-block;
 	padding: 10px;
-	border-bottom: 2px solid #f25050;
+	border-bottom: 2px solid #2cc36b;
 }
 .body .form form{
 	width: 50%;
@@ -191,7 +187,7 @@ table{
 }
 .body .form .box{
 	margin: 2% 0;
-	border: 2px solid #f25050;
+	border: 2px solid #2cc36b;
 	padding: 3px;
 }
 .body .form form article h4, .body .form form article select{
@@ -201,7 +197,7 @@ table{
 }
 .quota{
 	display: inline-block;
-	background-color: #f25050;
+	background-color: #2cc36b;
 	padding: 10px;
 }
 
@@ -221,6 +217,6 @@ table{
 
 .ui-menu-item{
 	background-color: #222d2f;
-	border: 2px solid #f25050;
+	border: 2px solid #2cc36b;
 	border-top: none;
 }

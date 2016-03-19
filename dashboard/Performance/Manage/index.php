@@ -1,4 +1,9 @@
 <?php
+	session_start();
+	$chk = $_SESSION["username"];
+	$name = $_SESSION["name"];
+	$chk = preg_replace('/[0-9]+/', '', $chk);
+
 	switch ($_REQUEST["type"]) {
 		case 'atten':
 			echo '<h1>ATTENDANCE</h1>
@@ -35,12 +40,56 @@
 						</select>
 					</article>
 					<article>
-						<input type="button" onclick="perfatten()" disabled="disabled" value="VIEW" id="viewindi">
+						<input type="button" value="VIEW" id="ret">
 					</article>
 				</form>
 				<div id="display"></div>
 				<script>
 						$(function() {
+							$("#ret").click(function(event) {
+								file = "http://localhost/easyd/dashboard/Performance/Manage/get.php";
+								type = $("input[name=leavereg]:checked").val();
+								name = $("#empname").val();
+								month = $("#month").val();
+								year = $("#year").val();
+								if (type == "comp") {
+									$("#display").load(file, {"month":month, "year":year});
+								}
+								else {
+									$("#display").load(file, {"name":name, "month":month, "year":year});
+								}
+							});
+							chk = "' . $chk . '";
+							name = "' . $name . '";
+							if (chk != \'ow\') {
+								$("#comp").attr("disabled", "disabled");
+								$("#empname").val(name);
+								$("#empname").attr("readonly", "readonly");
+							}
+							if($(this).attr("value")=="indiv"){
+								$(".box").show();
+								if ($("#empname").val() == "") {
+									$("#viewindi").attr("disabled", "disabled");
+								}
+							}
+							if($(this).attr("value")=="comp"){
+								$("#empname").val("");
+								$("#viewindi").removeAttr("disabled");
+								$(".box").hide();
+							}
+							$(\'input[type="radio"]\').click(function() {
+								if($(this).attr("value")=="indiv"){
+									$(".box").show();
+									if ($("#empname").val() == "") {
+										$("#viewindi").attr("disabled", "disabled");
+									}
+								}
+								if($(this).attr("value")=="comp"){
+									$("#empname").val("");
+									$("#viewindi").removeAttr("disabled");
+									$(".box").hide();
+								}
+							});
 							var id = "";
 							$(\'#empname\').autocomplete({
 								source: function(request, response) {
@@ -66,17 +115,30 @@
 					<h4 class="radio"><label><input type="radio" checked onclick="radioCheck()" id="indiv" name="leavereg" value="indiv"> INDIVIDUAL</label></h4>
 					<h4 class="radio"><label><input type="radio" onclick="radioCheck()" id="comp" name="leavereg" value="comp"> COMPANY</label></h4>
 					<div class="box">
-						<input type="text" class="fill" name="empname" onkeyup="checkviewindi()" id="empname" required placeholder="EMPLOYEE NAME">
+						<input type="text" class="fill" name="empname" id="empname" required placeholder="EMPLOYEE NAME">
 						<input type="text" class="fill" name="clientname" id="clientname" required placeholder="CLIENT NAME">
 						<input type="text" class="fill" name="projname" id="projname" required placeholder="PROJECT NAME">
 					</div>
 					<article>
-						<input type="button" onclick="perfproj()" disabled="disabled" value="VIEW" id="viewindi">
+						<input type="button" onclick="perfproj()" value="VIEW" id="viewindi">
 					</article>
 				</form>
 				<div id="display"></div>
 				<script>
 					$(function() {
+						if ($("#empname").val() == "") {
+							$("#viewindi").attr("disabled", "disabled");
+						}
+						else{
+							$("#viewindi").removeAttr("disabled");
+						}
+						chk = "' . $chk . '";
+						name = "' . $name . '";
+						if (chk != \'ow\') {
+							$("#comp").attr("disabled", "disabled");
+							$("#empname").val(name);
+							$("#empname").attr("readonly", "readonly");
+						}
 						$(\'#empname\').autocomplete({
 							source: "Performance/Manage/emp.php"
 						});

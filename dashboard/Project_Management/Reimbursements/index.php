@@ -1,8 +1,8 @@
 <?php
 	switch ($_REQUEST["type"]) {
 		case 'add':
-			echo '<h1>LEAVE APPLICATION</h1>
-				<form action="Project_Management/Reimbursements/insert.php" method="POST">
+			echo '<h1>ADD REIMBURSEMENTS</h1>
+				<form>
 					<section>
 						<input class="fill" type="text" id="periodfrom" required placeholder="PERIOD FROM" name="periodfrom">
 						<input class="fill" type="text" id="periodto" required placeholder="PERIOD TO" name="periodto">
@@ -27,8 +27,8 @@
 						<input class="fill" type="number" id="days" required placeholder="DAYS" name="days">
 					</section>
 					<section>
-						<input class="fill" type="number" id="distance" required placeholder="DISTANCE(km)" name="distance">
-						<input class="fill" type="number" id="price" required placeholder="PRICE/KM(Rs.)" name="price">
+						<input class="fill" type="number" id="distance" onkeyup="amnt()" required placeholder="DISTANCE(km)" name="distance">
+						<input class="fill" type="number" id="price" onkeyup="amnt()" required placeholder="PRICE/KM(Rs.)" name="price">
 					</section>
 					<section>
 						<input class="fill" type="number" id="amount" required placeholder="AMOUNT" name="amount">
@@ -36,14 +36,51 @@
 					</section>
 						<input class="fill" type="text" id="details" required placeholder="DETAILS" name="details">
 					<article>
-						<input type="submit" value="SUBMIT">
+						<input type="button" id="ret" value="SUBMIT">
 						<input type="reset" value="RESET">
 					</article>
-				</form>';
+				</form>
+				<h4 id="display"></h4>
+				<script>
+					function amnt(){
+						amt = Number($("#distance").val()) * Number($("#price").val());
+						$("#amount").val(amt);
+					}
+						$(function() {
+							$("#ret").click(function(event) {
+								file = "Project_Management/Reimbursements/insert.php";
+								periodfrom = $("#periodfrom").val();
+								periodto = $("#periodto").val();
+								category = $("#category").val();
+								posttype = $("#posttype").val();
+								mode = $("#mode").val();
+								days = $("#days").val();
+								distance = $("#distance").val();
+								price = $("#price").val();
+								amount = $("#amount").val();
+								invoice = $("#invoice").val();
+								details = $("#details").val();
+
+								$("#display").load(file, {"periodfrom":periodfrom, "periodto":periodto, "bill":category, "nature":posttype, "mode":mode,
+									"days":days, "distance":distance, "price":price, "amount":amount, "invoice":invoice, "details":details});
+								$("#periodto").val("");
+								$("#periodfrom").val("");
+							});
+						})
+				</script>';
 			break;
 		case 'view':
+			session_start();
+			$username = $_SESSION["username"];
+			$chk = preg_replace('/[0-9]+/', '', $username);
+			$name = $_SESSION["name"];
 				require "C:/xampp/htdocs/easyd/connect.php";
-				$sql = "SELECT * FROM reimburse_expenses";
+				if ($chk=="ow") {
+					$sql = "SELECT * FROM reimburse_expenses";
+				}
+				else{
+					$sql = "SELECT * FROM reimburse_expenses WHERE empname='" . $name . "'";
+				}
 				$result = $conn->query($sql);
 				if ($result->num_rows > 0) {
 					echo '<table class="pure-table pure-table-bordered">
